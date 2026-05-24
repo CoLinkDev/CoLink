@@ -1,0 +1,16 @@
+# Sub-projects (managed as independent repos)
+colink-server/
+colink-frontend/
+ColinkAPI/
+Playground/
+
+# Local-only directories
+*.local/
+
+# Build artifacts & dependencies
+node_modules/
+tmp/
+dist/
+
+# IDE & tools
+.antigravitycli/
