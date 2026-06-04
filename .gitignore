@@ -1,4 +1,6 @@
 Playground
 *.local/
+AGENTS.local.md
+**/AGENTS.local.md
 temp/
 .temp/
