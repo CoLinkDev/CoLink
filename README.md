@@ -16,8 +16,9 @@
 </p>
 <p align="center">
   <a href="#features">Features</a> •
+  <a href="#quickstart">Quick Start</a> •
   <a href="#architecture">Architecture</a> •
-  <a href="#development">Quick Start</a>
+  <a href="#development">Development</a>
 </p>
 
 ---
@@ -49,6 +50,25 @@ CoLink is a reliable cross-platform device connectivity tool. Copy on your phone
 ### CastBoard Demo
 
 https://www.youtube.com/watch?v=w7pMdKMIfjg
+
+## Quick Start
+
+### 1. Install a Client
+
+| Platform | Download |
+|----------|----------|
+| Windows | [Latest Release](https://github.com/CoLinkDev/colink-desktop/releases/latest) |
+| Android | [Latest Release](https://github.com/CoLinkDev/colink-android/releases/latest) |
+
+### 2. Connect
+
+1. Open the client and sign up.
+2. Pair devices on the same LAN via the 6-digit pairing code, or connect remotely through the server relay.
+3. Start syncing clipboard, sending files, or streaming CastBoard.
+
+### Self-hosting (Optional)
+
+You can self-host the CoLink server using Docker. See [colink-server](https://github.com/CoLinkDev/colink-server) for setup instructions.
 
 ## Architecture
 

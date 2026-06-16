@@ -8,8 +8,9 @@
 <p align="center">
   <a href="README.md">English</a> •
   <a href="#기능">기능</a> •
+  <a href="#빠른-시작">빠른 시작</a> •
   <a href="#아키텍처">아키텍처</a> •
-  <a href="#개발">빠른 시작</a>
+  <a href="#개발">개발</a>
 </p>
 
 ---
@@ -41,6 +42,25 @@ CoLink는 안정적인 크로스 플랫폼 기기 연결 도구입니다. 휴대
 ### CastBoard Demo
 
 https://www.youtube.com/watch?v=w7pMdKMIfjg
+
+## 빠른 시작
+
+### 1. 클라이언트 설치
+
+| 플랫폼 | 다운로드 |
+|----------|----------|
+| Windows | [최신 릴리스](https://github.com/CoLinkDev/colink-desktop/releases/latest) |
+| Android | [최신 릴리스](https://github.com/CoLinkDev/colink-android/releases/latest) |
+
+### 2. 연결
+
+1. 클라이언트를 열고 계정을 등록합니다.
+2. 같은 LAN에서는 6자리 페어링 코드로 기기를 페어링하거나, 서버 릴레이를 통해 원격으로 연결합니다.
+3. 클립보드 동기화, 파일 전송 또는 CastBoard 스트리밍을 시작합니다.
+
+### 셀프 호스팅(선택 사항)
+
+Docker로 CoLink 서버를 직접 호스팅할 수 있습니다. 설정 방법은 [colink-server](https://github.com/CoLinkDev/colink-server)를 참고하세요.
 
 ## 아키텍처
 

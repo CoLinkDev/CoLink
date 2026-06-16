@@ -8,8 +8,9 @@
 <p align="center">
   <a href="README.md">English</a> •
   <a href="#funciones">Funciones</a> •
+  <a href="#inicio-rápido">Inicio rápido</a> •
   <a href="#arquitectura">Arquitectura</a> •
-  <a href="#desarrollo">Inicio rápido</a>
+  <a href="#desarrollo">Desarrollo</a>
 </p>
 
 ---
@@ -41,6 +42,25 @@ CoLink es una herramienta estable y multiplataforma para conectar dispositivos. 
 ### CastBoard Demo
 
 https://www.youtube.com/watch?v=w7pMdKMIfjg
+
+## Inicio rápido
+
+### 1. Instalar un cliente
+
+| Plataforma | Descarga |
+|----------|----------|
+| Windows | [Última versión](https://github.com/CoLinkDev/colink-desktop/releases/latest) |
+| Android | [Última versión](https://github.com/CoLinkDev/colink-android/releases/latest) |
+
+### 2. Conectar
+
+1. Abre el cliente y registra una cuenta.
+2. Empareja dispositivos en la misma LAN con el código de 6 dígitos, o conéctalos de forma remota mediante el relé del servidor.
+3. Empieza a sincronizar el portapapeles, enviar archivos o transmitir CastBoard.
+
+### Autoalojamiento (opcional)
+
+Puedes autoalojar el servidor de CoLink con Docker. Consulta [colink-server](https://github.com/CoLinkDev/colink-server) para ver las instrucciones de configuración.
 
 ## Arquitectura
 
