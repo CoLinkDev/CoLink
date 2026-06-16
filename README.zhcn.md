@@ -112,7 +112,3 @@ git clone https://github.com/CoLinkDev/CoLinkProtocol.git
 - **桌面端** — `colink-desktop/README.md`
 - **Android** — `colink-android/README.md`
 - **前端** — `colink-frontend/README.md`
-
-## 许可证
-
-专有软件，保留所有权利。

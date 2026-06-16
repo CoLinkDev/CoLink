@@ -1,91 +1,121 @@
 <p align="center">
-  <h1 align="center">CoLink</h1>
-  <p align="center">Connect your devices, seamlessly.</p>
+  <img src="docs/assets/colink-logo.svg" alt="CoLink Logo" width="120" />
+</p>
+<p align="center">
+  <p align="center">CoLink • Connect all your devices for seamless collaboration.</p>
 </p>
 
 <p align="center">
+  <a href="README.zhcn.md">简体中文</a> •
+  <a href="README.ja.md">日本語</a> •
+  <a href="README.ko.md">한국어</a> •
+  <a href="README.zhtw.md">繁體中文</a> •
+  <a href="README.de.md">Deutsch</a> •
+  <a href="README.es.md">Español</a> •
+  <a href="README.ru.md">Русский</a>
+</p>
+<p align="center">
   <a href="#features">Features</a> •
-  <a href="#supported-platforms">Platforms</a> •
-  <a href="#how-it-works">How It Works</a> •
-  <a href="#security">Security</a>
+  <a href="#architecture">Architecture</a> •
+  <a href="#development">Quick Start</a>
 </p>
 
 ---
 
-CoLink is a cross-platform tool that connects all your devices together. Copy text on your phone, paste it on your desktop. Send files from your laptop to your tablet. It just works — whether your devices are on the same Wi-Fi or across the internet.
+CoLink is a reliable cross-platform device connectivity tool. Copy on your phone and paste on your desktop; transfer files between your laptop and tablet. It works seamlessly whether your devices are on the same LAN or connected over the internet.
 
 ## Features
 
-**Clipboard Sync** — Copy on one device, paste on another. Supports text, rich text, and images.
+- **Clipboard Sync** — Copy on one device and paste on another. Supports plain text, rich text, and images.
+- **File Transfer** — Send files between devices. Direct LAN transfers have no size limit; cloud relay supports up to 10 MB.
+- **Text Messages** — Send notes and text snippets between devices instantly.
+- **CastBoard** — Turn another device into a live status display for your computer. It pushes track information, album art, and synced lyrics in real time, with support for NetEase Cloud Music, QQ Music, and Spotify. More capabilities are planned.
+- **Direct LAN Connection** — Devices on the same network discover each other automatically through mDNS and connect directly without going through the cloud.
 
-**File Transfer** — Send files between your devices with drag-and-drop. LAN transfers have no size limit; cloud relay supports up to 10 MB.
+| Platform Support | App | Status |
+|------|------|------|
+| Windows  | colink-desktop | ✅ Available |
+| macOS    | colink-desktop | 🚧 Coming soon |
+| Linux    | colink-desktop | 🚧 Coming soon |
+| Android  | colink-android | ✅ Available |
+| iOS      | colink-ios     | 🚧 Planned |
 
-**Text Messaging** — Send quick notes and text snippets between devices instantly.
+## Preview
 
-## Supported Platforms
+| Device List | Message List | Message Page |
+|:---:|:---:|:---:|
+| <img src="docs/assets/Screenshot_2026-06-16-01-37-11-165_com.colink.android.debug.jpg" alt="Device list" width="250" /> | <img src="docs/assets/Screenshot_2026-06-16-01-37-16-481_com.colink.android.debug.jpg" alt="Message list" width="250" /> | <img src="docs/assets/Screenshot_2026-06-16-01-37-35-883_com.colink.android.debug-edit.jpg" alt="Message page" width="250" /> |
 
-| Platform | Status |
-|----------|--------|
-| Windows  | ✅ Available |
-| macOS    | ✅ Available |
-| Linux    | ✅ Available |
-| Android  | ✅ Available |
-| iOS      | 🚧 Planned  |
+### CastBoard Demo
 
-## How It Works
+https://www.youtube.com/watch?v=w7pMdKMIfjg
 
-CoLink automatically picks the best path for your data:
+## Architecture
 
-- **Same network** — Data flows directly between devices over LAN. Fast, private, no size limits.
-- **Different networks** — Data is relayed through the CoLink server. Nothing is stored on the server.
+```
+                        ┌─────────────────────┐
+                        │   colink-server     │
+                        │   (Go / Gin)        │
+                        │   REST + WS Relay   │
+                        └────────┬────────────┘
+                                 │
+               HTTPS / WSS       │       HTTPS / WSS
+        ┌────────────────────────┼────────────────────────┐
+        │                        │                        │
+        ▼                        ▼                        ▼
+┌───────────────┐      ┌────────────────┐       ┌─────────────────┐
+│ colink-desktop│      │ colink-android │       │ colink-frontend │
+│ Tauri 2.x     │      │ Kotlin/Compose │       │ Vue 3 Web App   │
+│ Win/Mac/Linux │      │ Android        │       │ Account Mgmt    │
+└───────┬───────┘      └───────┬────────┘       └─────────────────┘
+        │                      │
+        │  LAN (mDNS + WS)     │
+        └──────────────────────┘
+```
+
+| Communication Path | Transport | Purpose |
+|------|----------|------|
+| Client ↔ Server | HTTPS + WSS | Authentication, device management, cloud relay |
+| Client ↔ Client (LAN) | mDNS + WebSocket | Direct P2P on the same network |
+| Frontend ↔ Server | HTTPS | Account management |
 
 ## Security
 
-- Per-device Ed25519 key pairs for authentication
-- Mutual cryptographic handshake on LAN connections
-- No message or file persistence on the server
-- JWT-based session management with short-lived tokens
+- Each device has its own Ed25519 key pair as a non-forgeable cryptographic identity, with online rotation support.
+- LAN connections establish mutual trust through a four-step mutual handshake. First-time pairing uses a SHA-256-derived 6-digit pairing code to prevent MITM attacks.
+- LAN messages are end-to-end encrypted with X25519 ECDH key agreement, HKDF-SHA256 session keys, and AES-256-GCM/ChaCha20-Poly1305 AEAD.
+- JWT access tokens are valid for 15 minutes. Refresh tokens are rotated immediately after single use, and old tokens are marked revoked to detect replay.
+- The server does not persist messages, files, or clipboard contents. It only stores account and device metadata.
 
----
+## Development
 
-## For Developers
+This project uses a multi-repository structure. Each component is maintained independently:
 
-This repository serves as the entry point for the CoLink project. The actual source code lives in separate repositories:
+| Repository | Tech Stack | Description |
+|------|--------|------|
+| [colink-server](https://github.com/CoLinkDev/colink-server) | Go, Gin, GORM, PostgreSQL | Backend API server and WebSocket relay |
+| [colink-desktop](https://github.com/CoLinkDev/colink-desktop) | Tauri 2.x (Rust + React/TS) | Desktop client for Windows, macOS, and Linux |
+| [colink-android](https://github.com/CoLinkDev/colink-android) | Kotlin, Jetpack Compose | Android client |
+| [colink-frontend](https://github.com/CoLinkDev/colink-frontend) | Vue 3, TypeScript | Account and session management web frontend |
+| [CoLinkProtocol](https://github.com/CoLinkDev/CoLinkProtocol) | Markdown | Protocol specifications and API documentation |
 
-| Repository | Description |
-|-----------|-------------|
-| [colink-server](https://github.com/CoLinkDev/colink-server) | Backend service (Go, Gin, PostgreSQL) |
-| [colink-frontend](https://github.com/CoLinkDev/colink-frontend) | Web app for account management (Vue 3, TypeScript) |
-| [ColinkAPI](https://github.com/CoLinkDev/ColinkAPI) | Protocol & API documentation |
-
-### Setting Up the Development Environment
-
-1. Clone this repository and all project repos into the same directory:
+Clone the root repository and all sub-repositories into the same parent directory:
 
 ```bash
 git clone https://github.com/CoLinkDev/CoLink.git
 cd CoLink
 git clone https://github.com/CoLinkDev/colink-server.git
+git clone https://github.com/CoLinkDev/colink-desktop.git
+git clone https://github.com/CoLinkDev/colink-android.git
 git clone https://github.com/CoLinkDev/colink-frontend.git
-git clone https://github.com/CoLinkDev/ColinkAPI.git
+git clone https://github.com/CoLinkDev/CoLinkProtocol.git
 ```
 
-2. Each sub-project has its own README with setup instructions. Refer to them for building and running individually.
+### Build and Run
 
-3. Shared configuration files (like `AGENTS.md`) in this root directory apply to all sub-projects during development.
+Each sub-project has its own setup instructions. See the corresponding README:
 
-### Project Structure
-
-```
-CoLink/
-├── AGENTS.md             # Shared AI agent instructions
-├── README.md             # This file
-├── .gitignore
-├── colink-server/        # ← separate git repo
-├── colink-frontend/      # ← separate git repo
-└── ColinkAPI/            # ← separate git repo
-```
-
-## License
-
-Proprietary. All rights reserved.
+- **Server** — `colink-server/README.md`
+- **Desktop** — `colink-desktop/README.md`
+- **Android** — `colink-android/README.md`
+- **Frontend** — `colink-frontend/README.md`
