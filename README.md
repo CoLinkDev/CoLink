@@ -30,7 +30,7 @@ CoLink is a reliable cross-platform device connectivity tool. Copy on your phone
 - **Clipboard Sync** — Copy on one device and paste on another. Supports plain text, rich text, and images.
 - **File Transfer** — Send files between devices. Direct LAN transfers have no size limit; cloud relay supports up to 10 MB.
 - **Text Messages** — Send notes and text snippets between devices instantly.
-- **CastBoard** — Turn another device into a live status display for your computer. It pushes track information, album art, and synced lyrics in real time, with support for NetEase Cloud Music, QQ Music, and Spotify. More capabilities are planned.
+- **CastBoard** — Turn another device into a live status display for your computer. It pushes track information, album art, and synced lyrics in real time, with support for NetEase Cloud Music, QQ Music, Sogou Music, and Spotify. It also syncs your computer's CPU, memory, network, and other usage metrics. More capabilities are planned.
 - **Direct LAN Connection** — Devices on the same network discover each other automatically through mDNS and connect directly without going through the cloud.
 
 | Platform Support | App | Status |

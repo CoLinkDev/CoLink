@@ -22,7 +22,7 @@ CoLink ist ein zuverlässiges plattformübergreifendes Werkzeug zur Geräteverne
 - **Zwischenablage-Synchronisierung** — Auf einem Gerät kopieren, auf einem anderen einfügen. Unterstützt Klartext, Rich Text und Bilder.
 - **Dateiübertragung** — Dateien zwischen Geräten senden. Direkte LAN-Übertragungen haben keine Größenbeschränkung; Cloud-Relay unterstützt bis zu 10 MB.
 - **Textnachrichten** — Notizen und Textausschnitte sofort zwischen Geräten senden.
-- **CastBoard** — Verwandle ein anderes Gerät in eine Live-Statusanzeige für deinen Computer. Titelinformationen, Albumcover und synchronisierte Liedtexte werden in Echtzeit übertragen, mit Unterstützung für NetEase Cloud Music, QQ Music und Spotify. Weitere Funktionen sind geplant.
+- **CastBoard** — Verwandle ein anderes Gerät in eine Live-Statusanzeige für deinen Computer. Titelinformationen, Albumcover und synchronisierte Liedtexte werden in Echtzeit übertragen, mit Unterstützung für NetEase Cloud Music, QQ Music, Sogou Music und Spotify. Außerdem synchronisiert es CPU-, Arbeitsspeicher-, Netzwerk- und weitere Auslastungswerte deines Computers. Weitere Funktionen sind geplant.
 - **Direkte LAN-Verbindung** — Geräte im selben Netzwerk finden sich automatisch per mDNS und verbinden sich direkt, vollständig ohne Cloud.
 
 | Plattformunterstützung | App | Status |

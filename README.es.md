@@ -22,7 +22,7 @@ CoLink es una herramienta estable y multiplataforma para conectar dispositivos. 
 - **Sincronización del portapapeles** — Copia en un dispositivo y pega en otro. Admite texto sin formato, texto enriquecido e imágenes.
 - **Transferencia de archivos** — Envía archivos entre dispositivos. Las transferencias directas por LAN no tienen límite de tamaño; el relé en la nube admite hasta 10 MB.
 - **Mensajes de texto** — Envía notas y fragmentos de texto entre dispositivos al instante.
-- **CastBoard** — Convierte otro dispositivo en una pantalla de estado en tiempo real para tu ordenador. Envía información de la pista, carátulas y letras sincronizadas en tiempo real, con soporte para NetEase Cloud Music, QQ Music y Spotify. Se añadirán más funciones.
+- **CastBoard** — Convierte otro dispositivo en una pantalla de estado en tiempo real para tu ordenador. Envía información de la pista, carátulas y letras sincronizadas en tiempo real, con soporte para NetEase Cloud Music, QQ Music, Sogou Music y Spotify. También sincroniza el uso de CPU, memoria, red y otros recursos del ordenador. Se añadirán más funciones.
 - **Conexión directa por LAN** — Los dispositivos de la misma red se descubren automáticamente mediante mDNS y se conectan directamente, sin pasar por la nube.
 
 | Plataforma compatible | Aplicación | Estado |
