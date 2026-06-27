@@ -2,17 +2,9 @@
 
 - If `AGENTS.local.md` exists, read it for machine-local instructions. It is ignored by git.
 - All commits must use Conventional Commits.
-- For desktop development, follow `colink-desktop/AGENTS.md`.
+- This directory is a top-level workspace repository containing multiple projects, each maintained as an independent nested Git repository. Except for changes owned by the top-level workspace repository, perform all Git operations from within the affected nested repository.
+- When working in a project, strictly follow the instructions in that project's `AGENTS.md`.
 - When changing fixed UI strings, update all i18n entries; first check how many locales the target app carries.
-
-## Android Build Variants (Debug & Release)
-
-| Configuration | Release Variant | Debug Variant |
-| :--- | :--- | :--- |
-| **Application ID (Package Name)** | `com.colink.android` | `com.colink.android.debug` |
-| **Application Name (App Label)** | `CoLink` | `CoLink Debug` |
-
-Unless specified otherwise by the user, any build or run actions refer to the debug variant by default.
 
 ## Protocol Compatibility
 
