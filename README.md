@@ -116,6 +116,7 @@ This project uses a multi-repository structure. Each component is maintained ind
 | [colink-server](https://github.com/CoLinkDev/colink-server) | Go, Gin, GORM, PostgreSQL | Backend API server and WebSocket relay |
 | [colink-desktop](https://github.com/CoLinkDev/colink-desktop) | Tauri 2.x (Rust + React/TS) | Desktop client for Windows, macOS, and Linux |
 | [colink-android](https://github.com/CoLinkDev/colink-android) | Kotlin, Jetpack Compose | Android client |
+| [colink-castboard](https://github.com/CoLinkDev/colink-castboard) | TypeScript | Standalone CastBoard project |
 | [colink-frontend](https://github.com/CoLinkDev/colink-frontend) | Vue 3, TypeScript | Account and session management web frontend |
 | [CoLinkProtocol](https://github.com/CoLinkDev/CoLinkProtocol) | Markdown | Protocol specifications and API documentation |
 
@@ -127,6 +128,7 @@ cd CoLink
 git clone https://github.com/CoLinkDev/colink-server.git
 git clone https://github.com/CoLinkDev/colink-desktop.git
 git clone https://github.com/CoLinkDev/colink-android.git
+git clone https://github.com/CoLinkDev/colink-castboard.git
 git clone https://github.com/CoLinkDev/colink-frontend.git
 git clone https://github.com/CoLinkDev/CoLinkProtocol.git
 ```
@@ -138,4 +140,5 @@ Each sub-project has its own setup instructions. See the corresponding README:
 - **Server** — `colink-server/README.md`
 - **Desktop** — `colink-desktop/README.md`
 - **Android** — `colink-android/README.md`
+- **CastBoard** — `colink-castboard/README.md`
 - **Frontend** — `colink-frontend/README.md`
