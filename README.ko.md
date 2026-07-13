@@ -29,7 +29,7 @@ CoLink는 안정적인 크로스 플랫폼 기기 연결 도구입니다. 휴대
 |------|------|------|
 | Windows  | colink-desktop | ✅ 사용 가능 |
 | macOS    | colink-desktop | 🚧 곧 제공 |
-| Linux    | colink-desktop | 🚧 곧 제공 |
+| Linux    | colink-desktop | ✅ 사용 가능 |
 | Android  | colink-android | ✅ 사용 가능 |
 | iOS      | colink-ios     | 🚧 계획 중 |
 
@@ -50,6 +50,7 @@ https://www.youtube.com/watch?v=w7pMdKMIfjg
 | 플랫폼 | 다운로드 |
 |----------|----------|
 | Windows | [최신 릴리스](https://github.com/CoLinkDev/colink-desktop/releases/latest) |
+| Linux | [최신 릴리스](https://github.com/CoLinkDev/colink-desktop/releases/latest) |
 | Android | [최신 릴리스](https://github.com/CoLinkDev/colink-android/releases/latest) |
 
 ### 2. 연결

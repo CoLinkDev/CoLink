@@ -37,7 +37,7 @@ CoLink is a reliable cross-platform device connectivity tool. Copy on your phone
 |------|------|------|
 | Windows  | colink-desktop | ✅ Available |
 | macOS    | colink-desktop | 🚧 Coming soon |
-| Linux    | colink-desktop | 🚧 Coming soon |
+| Linux    | colink-desktop | ✅ Available |
 | Android  | colink-android | ✅ Available |
 | iOS      | colink-ios     | 🚧 Planned |
 
@@ -58,6 +58,7 @@ https://www.youtube.com/watch?v=w7pMdKMIfjg
 | Platform | Download |
 |----------|----------|
 | Windows | [Latest Release](https://github.com/CoLinkDev/colink-desktop/releases/latest) |
+| Linux | [Latest Release](https://github.com/CoLinkDev/colink-desktop/releases/latest) |
 | Android | [Latest Release](https://github.com/CoLinkDev/colink-android/releases/latest) |
 
 ### 2. Connect

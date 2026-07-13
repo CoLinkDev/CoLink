@@ -29,7 +29,7 @@ CoLink es una herramienta estable y multiplataforma para conectar dispositivos. 
 |------|------|------|
 | Windows  | colink-desktop | ✅ Disponible |
 | macOS    | colink-desktop | 🚧 Próximamente |
-| Linux    | colink-desktop | 🚧 Próximamente |
+| Linux    | colink-desktop | ✅ Disponible |
 | Android  | colink-android | ✅ Disponible |
 | iOS      | colink-ios     | 🚧 Planificado |
 
@@ -50,6 +50,7 @@ https://www.youtube.com/watch?v=w7pMdKMIfjg
 | Plataforma | Descarga |
 |----------|----------|
 | Windows | [Última versión](https://github.com/CoLinkDev/colink-desktop/releases/latest) |
+| Linux | [Última versión](https://github.com/CoLinkDev/colink-desktop/releases/latest) |
 | Android | [Última versión](https://github.com/CoLinkDev/colink-android/releases/latest) |
 
 ### 2. Conectar
