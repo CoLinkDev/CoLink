@@ -52,6 +52,21 @@ CoLink is a reliable cross-platform device connectivity tool. Copy on your phone
 
 https://www.youtube.com/watch?v=w7pMdKMIfjg
 
+<table>
+  <tr>
+    <td>Synchronized Lyrics</td>
+    <td><img src="docs/assets/Screenshot_20260719-172822561.jpg" alt="CastBoard synchronized lyrics" width="640" /></td>
+  </tr>
+  <tr>
+    <td>Now Playing</td>
+    <td><img src="docs/assets/Screenshot_20260719-172830971.jpg" alt="CastBoard now playing" width="640" /></td>
+  </tr>
+  <tr>
+    <td>System Metrics</td>
+    <td><img src="docs/assets/Screenshot_20260719-172840770.jpg" alt="CastBoard system metrics" width="640" /></td>
+  </tr>
+</table>
+
 ## Quick Start
 
 ### 1. Install a Client
