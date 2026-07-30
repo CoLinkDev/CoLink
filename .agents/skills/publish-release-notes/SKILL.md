@@ -22,7 +22,7 @@ Use this skill when writing or updating the GitHub Release Notes for a version o
 1. Synchronize remote tags, then determine the target tag. If the user explicitly specifies a tag, use it. If the user provides a version without the `v` prefix, first attempt to resolve `v<version>`. Otherwise, use the most recently created tag. Confirm that the target tag resolves.
 2. Determine the baseline tag. If the user explicitly specifies a comparison tag, use it. Otherwise, find the tag created immediately before the target tag. Confirm that the baseline tag resolves.
 3. Before drafting, use the `gh` CLI to confirm that a GitHub Release exists for the target tag.
-4. Fully inspect the commits, file differences, and relevant implementation between the two tags. Do not rely solely on commit titles. For every potentially user-facing change, focus on UI text, user workflows, configuration behavior, documentation for supported behavior, and user-visible error handling.
+4. Fully inspect the commits, file differences, and deeply think about the relevant implementation between the two tags. Do not rely solely on commit titles. For every potentially user-facing change, focus on UI text, user workflows, configuration behavior, documentation for supported behavior, and user-visible error handling.
 
 ## Write the Release Notes
 
@@ -30,7 +30,7 @@ Use the [Release Note template](references/release-notes-template.md) and [Relea
 
 Content rules:
 
-- Include only externally observable changes and describe specific capabilities or outcomes from the user's perspective. Combine related commits, and keep each item concise and specific. Do not include commit IDs, PR numbers, file names, module names, or implementation details. Do not present isolated refactors or translation changes as user-facing changes.
+- Include only externally observable changes and describe specific capabilities or outcomes from the user's perspective. Combine related commits and keep each item concise and specific. When the same feature undergoes multiple iterations or follow-up corrections within the version, merge all related commits into a single entry describing only the final net effect — do not expose intermediate development steps or superseded states. Do not include commit IDs, PR numbers, file names, module names, or implementation details. Do not present isolated refactors or translation changes as user-facing changes.
 - Put new capabilities under **What's New**, user-visible optimizations under **Improvements**, and issue fixes under **Fixes**.
 - The meaning must be equivalent in every language and expressed naturally in each one. Product names, established UI labels, file extensions, keyboard shortcuts, and technical terms that aid understanding may remain untranslated.
 - Include only categories with qualifying content. If a category has no relevant changes, omit both its heading and content in every language. Do not use placeholder text or add internal changes merely to populate a category.
