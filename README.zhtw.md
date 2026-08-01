@@ -15,15 +15,20 @@
 
 ---
 
-CoLink 是一款穩定的跨平台裝置互聯工具。在手機上複製，在桌面上貼上；在筆記型電腦和平板之間傳輸檔案。無論裝置處於同一區域網路，還是透過網際網路連線，都能無縫運作。
+CoLink 是一款跨平台裝置互聯工具，將日常同步、遠端存取和裝置控制整合在同一套連線中。無論裝置處於同一區域網路，還是透過網際網路連線，都能安全協作。
 
 ## 功能
 
 - **剪貼簿同步** — 在一台裝置上複製，在另一台裝置上貼上。支援純文字、富文字和圖片。
 - **檔案傳輸** — 在裝置之間傳送檔案。區域網路直連傳輸沒有大小限制；雲端中繼最大支援 10 MB。
 - **文字訊息** — 在裝置之間即時傳送筆記和文字片段。
-- **CastBoard** — 將另一台裝置變成即時的電腦狀態顯示器。即時推送曲目資訊、專輯封面和同步歌詞（支援網易雲音樂、QQ 音樂、搜狗音樂、Spotify），同步電腦的 CPU、記憶體、網路等使用率，後續將增加更多功能。
+- **遠端檔案存取** — 瀏覽遠端裝置的檔案系統，並在已連線裝置之間傳輸檔案。
+- **遠端終端機與裝置控制** — 從手機開啟已連線電腦的互動式終端機；依對端支援情況控制電源狀態、媒體播放和系統音量。
+- **遠端攝影機** — 查看已連線裝置的攝影機即時畫面。
+- **CastBoard** — 將另一台裝置變成即時狀態顯示器：顯示目前播放資訊、專輯封面與同步歌詞（支援網易雲音樂、QQ 音樂、搜狗音樂、Spotify），並同步電腦的 CPU、記憶體、網路等系統指標。
 - **區域網路直連** — 同一網路下的裝置透過 mDNS 自動發現並直連，完全繞過雲端。
+
+遠端存取與控制功能取決於兩端用戶端版本、平台能力和授予的權限。
 
 | 平台支援 | 應用程式 | 狀態 |
 |------|------|------|
@@ -33,7 +38,7 @@ CoLink 是一款穩定的跨平台裝置互聯工具。在手機上複製，在�
 | Android  | colink-android | ✅ 可用 |
 | iOS      | colink-ios     | 🚧 規劃中 |
 
-## 功能預覽
+## 介面預覽
 
 | 裝置列表 | 訊息列表 | 訊息頁面 |
 |:---:|:---:|:---:|
@@ -42,6 +47,21 @@ CoLink 是一款穩定的跨平台裝置互聯工具。在手機上複製，在�
 ### CastBoard Demo
 
 https://www.youtube.com/watch?v=w7pMdKMIfjg
+
+<table>
+  <tr>
+    <td>同步歌詞</td>
+    <td><img src="docs/assets/Screenshot_20260719-172822561.jpg" alt="CastBoard 同步歌詞" width="640" /></td>
+  </tr>
+  <tr>
+    <td>目前播放</td>
+    <td><img src="docs/assets/Screenshot_20260719-172830971.jpg" alt="CastBoard 目前播放" width="640" /></td>
+  </tr>
+  <tr>
+    <td>系統指標</td>
+    <td><img src="docs/assets/Screenshot_20260719-172840770.jpg" alt="CastBoard 系統指標" width="640" /></td>
+  </tr>
+</table>
 
 ## 快速開始
 
@@ -57,7 +77,7 @@ https://www.youtube.com/watch?v=w7pMdKMIfjg
 
 1. 開啟用戶端並註冊帳戶。
 2. 透過 6 位配對碼在同一區域網路內配對裝置，或透過伺服器中繼遠端連線。
-3. 開始同步剪貼簿、傳送檔案或使用 CastBoard。
+3. 開始同步剪貼簿、傳送檔案和訊息，或使用遠端存取、裝置控制與 CastBoard。
 
 ### 自行託管（選用）
 
@@ -110,7 +130,7 @@ https://www.youtube.com/watch?v=w7pMdKMIfjg
 | [colink-desktop](https://github.com/CoLinkDev/colink-desktop) | Tauri 2.x (Rust + React/TS) | 桌面用戶端（Windows、macOS、Linux） |
 | [colink-android](https://github.com/CoLinkDev/colink-android) | Kotlin, Jetpack Compose | Android 用戶端 |
 | [colink-frontend](https://github.com/CoLinkDev/colink-frontend) | Vue 3, TypeScript | 帳戶與工作階段管理 Web 前端 |
-| [CoLinkProtocol](https://github.com/CoLinkDev/CoLinkProtocol) | Markdown | 協定規範與 API 文件 |
+| [CoLinkProtocol](https://github.com/CoLinkDev/CoLinkProtocol) | Markdown | 協定規範與 API 文件（託管文件：[CoLink Protocol](https://colinkdev.github.io/CoLinkProtocol/)） |
 
 將主儲存庫和所有子儲存庫複製到同一父目錄下：
 

@@ -15,15 +15,20 @@
 
 ---
 
-CoLink es una herramienta estable y multiplataforma para conectar dispositivos. Copia en el teléfono y pega en el escritorio; transfiere archivos entre el portátil y la tableta. Funciona sin interrupciones tanto si los dispositivos están en la misma LAN como si se conectan a través de internet.
+CoLink es una herramienta multiplataforma para conectar dispositivos que reúne la sincronización diaria, el acceso remoto y el control de dispositivos en una sola conexión. Tanto si los dispositivos están en la misma LAN como si se conectan a través de internet, pueden colaborar de forma segura.
 
 ## Funciones
 
 - **Sincronización del portapapeles** — Copia en un dispositivo y pega en otro. Admite texto sin formato, texto enriquecido e imágenes.
 - **Transferencia de archivos** — Envía archivos entre dispositivos. Las transferencias directas por LAN no tienen límite de tamaño; el relé en la nube admite hasta 10 MB.
 - **Mensajes de texto** — Envía notas y fragmentos de texto entre dispositivos al instante.
-- **CastBoard** — Convierte otro dispositivo en una pantalla de estado en tiempo real para tu ordenador. Envía información de la pista, carátulas y letras sincronizadas en tiempo real, con soporte para NetEase Cloud Music, QQ Music, Sogou Music y Spotify. También sincroniza el uso de CPU, memoria, red y otros recursos del ordenador. Se añadirán más funciones.
+- **Acceso remoto a archivos** — Explora el sistema de archivos de un dispositivo remoto y transfiere archivos entre dispositivos conectados.
+- **Terminal remoto y control de dispositivos** — Abre un terminal interactivo en un ordenador conectado desde el teléfono; según la compatibilidad del dispositivo remoto, controla el estado de energía, la reproducción multimedia y el volumen del sistema.
+- **Cámara remota** — Visualiza vídeo en directo de las cámaras de los dispositivos conectados.
+- **CastBoard** — Convierte otro dispositivo en una pantalla de estado en tiempo real: muestra la reproducción actual, la carátula y letras sincronizadas (NetEase Cloud Music, QQ Music, Sogou Music y Spotify), y sincroniza CPU, memoria, red y otras métricas del sistema del ordenador.
 - **Conexión directa por LAN** — Los dispositivos de la misma red se descubren automáticamente mediante mDNS y se conectan directamente, sin pasar por la nube.
+
+Las funciones de acceso remoto y control dependen de la versión del cliente, las capacidades de la plataforma y los permisos concedidos en ambos dispositivos.
 
 | Plataforma compatible | Aplicación | Estado |
 |------|------|------|
@@ -33,7 +38,7 @@ CoLink es una herramienta estable y multiplataforma para conectar dispositivos. 
 | Android  | colink-android | ✅ Disponible |
 | iOS      | colink-ios     | 🚧 Planificado |
 
-## Vista previa
+## Vista previa de la interfaz
 
 | Lista de dispositivos | Lista de mensajes | Página de mensajes |
 |:---:|:---:|:---:|
@@ -42,6 +47,21 @@ CoLink es una herramienta estable y multiplataforma para conectar dispositivos. 
 ### CastBoard Demo
 
 https://www.youtube.com/watch?v=w7pMdKMIfjg
+
+<table>
+  <tr>
+    <td>Letras sincronizadas</td>
+    <td><img src="docs/assets/Screenshot_20260719-172822561.jpg" alt="Letras sincronizadas de CastBoard" width="640" /></td>
+  </tr>
+  <tr>
+    <td>Reproducción actual</td>
+    <td><img src="docs/assets/Screenshot_20260719-172830971.jpg" alt="Reproducción actual de CastBoard" width="640" /></td>
+  </tr>
+  <tr>
+    <td>Métricas del sistema</td>
+    <td><img src="docs/assets/Screenshot_20260719-172840770.jpg" alt="Métricas del sistema de CastBoard" width="640" /></td>
+  </tr>
+</table>
 
 ## Inicio rápido
 
@@ -57,7 +77,7 @@ https://www.youtube.com/watch?v=w7pMdKMIfjg
 
 1. Abre el cliente y registra una cuenta.
 2. Empareja dispositivos en la misma LAN con el código de 6 dígitos, o conéctalos de forma remota mediante el relé del servidor.
-3. Empieza a sincronizar el portapapeles, enviar archivos o transmitir CastBoard.
+3. Empieza a sincronizar el portapapeles, enviar archivos y mensajes, o usa el acceso remoto, el control de dispositivos y CastBoard.
 
 ### Autoalojamiento (opcional)
 
@@ -110,7 +130,7 @@ Este proyecto usa una estructura de múltiples repositorios. Cada componente se 
 | [colink-desktop](https://github.com/CoLinkDev/colink-desktop) | Tauri 2.x (Rust + React/TS) | Cliente de escritorio para Windows, macOS y Linux |
 | [colink-android](https://github.com/CoLinkDev/colink-android) | Kotlin, Jetpack Compose | Cliente Android |
 | [colink-frontend](https://github.com/CoLinkDev/colink-frontend) | Vue 3, TypeScript | Frontend web para gestión de cuentas y sesiones |
-| [CoLinkProtocol](https://github.com/CoLinkDev/CoLinkProtocol) | Markdown | Especificaciones del protocolo y documentación de API |
+| [CoLinkProtocol](https://github.com/CoLinkDev/CoLinkProtocol) | Markdown | Especificaciones del protocolo y documentación de API (documentación alojada: [CoLink Protocol](https://colinkdev.github.io/CoLinkProtocol/)) |
 
 Clona el repositorio raíz y todos los subrepositorios en el mismo directorio padre:
 

@@ -15,15 +15,20 @@
 
 ---
 
-CoLink ist ein zuverlässiges plattformübergreifendes Werkzeug zur Gerätevernetzung. Kopiere auf dem Smartphone und füge auf dem Desktop ein; übertrage Dateien zwischen Laptop und Tablet. Es funktioniert nahtlos, egal ob deine Geräte im selben LAN oder über das Internet verbunden sind.
+CoLink ist ein plattformübergreifendes Werkzeug zur Gerätevernetzung, das alltägliche Synchronisierung, Fernzugriff und Gerätesteuerung über eine gemeinsame Verbindung vereint. Unabhängig davon, ob die Geräte im selben LAN oder über das Internet verbunden sind, können sie sicher zusammenarbeiten.
 
 ## Funktionen
 
 - **Zwischenablage-Synchronisierung** — Auf einem Gerät kopieren, auf einem anderen einfügen. Unterstützt Klartext, Rich Text und Bilder.
 - **Dateiübertragung** — Dateien zwischen Geräten senden. Direkte LAN-Übertragungen haben keine Größenbeschränkung; Cloud-Relay unterstützt bis zu 10 MB.
 - **Textnachrichten** — Notizen und Textausschnitte sofort zwischen Geräten senden.
-- **CastBoard** — Verwandle ein anderes Gerät in eine Live-Statusanzeige für deinen Computer. Titelinformationen, Albumcover und synchronisierte Liedtexte werden in Echtzeit übertragen, mit Unterstützung für NetEase Cloud Music, QQ Music, Sogou Music und Spotify. Außerdem synchronisiert es CPU-, Arbeitsspeicher-, Netzwerk- und weitere Auslastungswerte deines Computers. Weitere Funktionen sind geplant.
+- **Remote-Dateizugriff** — Durchsuche das Dateisystem eines entfernten Geräts und übertrage Dateien zwischen verbundenen Geräten.
+- **Remote-Terminal und Gerätesteuerung** — Öffne vom Smartphone aus ein interaktives Terminal auf einem verbundenen Computer; je nach Unterstützung des Gegenübers lassen sich Energiezustand, Medienwiedergabe und Systemlautstärke steuern.
+- **Remote-Kamera** — Sieh dir Livevideo von Kameras verbundener Geräte an.
+- **CastBoard** — Verwandle ein anderes Gerät in eine Live-Statusanzeige: Zeige aktuelle Wiedergabe, Albumcover und synchronisierte Liedtexte (NetEase Cloud Music, QQ Music, Sogou Music und Spotify) an und synchronisiere CPU-, Arbeitsspeicher-, Netzwerk- und weitere Systemwerte deines Computers.
 - **Direkte LAN-Verbindung** — Geräte im selben Netzwerk finden sich automatisch per mDNS und verbinden sich direkt, vollständig ohne Cloud.
+
+Funktionen für Fernzugriff und Steuerung hängen von Client-Version, Plattformfähigkeiten und den auf beiden Geräten gewährten Berechtigungen ab.
 
 | Plattformunterstützung | App | Status |
 |------|------|------|
@@ -33,7 +38,7 @@ CoLink ist ein zuverlässiges plattformübergreifendes Werkzeug zur Geräteverne
 | Android  | colink-android | ✅ Verfügbar |
 | iOS      | colink-ios     | 🚧 Geplant |
 
-## Vorschau
+## Oberflächenvorschau
 
 | Geräteliste | Nachrichtenliste | Nachrichtenseite |
 |:---:|:---:|:---:|
@@ -42,6 +47,21 @@ CoLink ist ein zuverlässiges plattformübergreifendes Werkzeug zur Geräteverne
 ### CastBoard Demo
 
 https://www.youtube.com/watch?v=w7pMdKMIfjg
+
+<table>
+  <tr>
+    <td>Synchronisierte Liedtexte</td>
+    <td><img src="docs/assets/Screenshot_20260719-172822561.jpg" alt="Synchronisierte CastBoard-Liedtexte" width="640" /></td>
+  </tr>
+  <tr>
+    <td>Aktuelle Wiedergabe</td>
+    <td><img src="docs/assets/Screenshot_20260719-172830971.jpg" alt="Aktuelle CastBoard-Wiedergabe" width="640" /></td>
+  </tr>
+  <tr>
+    <td>Systemmetriken</td>
+    <td><img src="docs/assets/Screenshot_20260719-172840770.jpg" alt="CastBoard-Systemmetriken" width="640" /></td>
+  </tr>
+</table>
 
 ## Schnellstart
 
@@ -57,7 +77,7 @@ https://www.youtube.com/watch?v=w7pMdKMIfjg
 
 1. Öffne den Client und registriere ein Konto.
 2. Kopple Geräte im selben LAN über den sechsstelligen Kopplungscode oder verbinde sie remote über das Server-Relay.
-3. Starte die Zwischenablage-Synchronisierung, sende Dateien oder streame CastBoard.
+3. Starte die Zwischenablage-Synchronisierung, sende Dateien und Nachrichten oder nutze Fernzugriff, Gerätesteuerung und CastBoard.
 
 ### Self-Hosting (optional)
 
@@ -110,7 +130,7 @@ Dieses Projekt verwendet eine Multi-Repository-Struktur. Jede Komponente wird ei
 | [colink-desktop](https://github.com/CoLinkDev/colink-desktop) | Tauri 2.x (Rust + React/TS) | Desktop-Client für Windows, macOS und Linux |
 | [colink-android](https://github.com/CoLinkDev/colink-android) | Kotlin, Jetpack Compose | Android-Client |
 | [colink-frontend](https://github.com/CoLinkDev/colink-frontend) | Vue 3, TypeScript | Web-Frontend für Konto- und Sitzungsverwaltung |
-| [CoLinkProtocol](https://github.com/CoLinkDev/CoLinkProtocol) | Markdown | Protokollspezifikationen und API-Dokumentation |
+| [CoLinkProtocol](https://github.com/CoLinkDev/CoLinkProtocol) | Markdown | Protokollspezifikationen und API-Dokumentation (gehostete Dokumentation: [CoLink Protocol](https://colinkdev.github.io/CoLinkProtocol/)) |
 
 Klone das Haupt-Repository und alle Unter-Repositories in dasselbe übergeordnete Verzeichnis:
 

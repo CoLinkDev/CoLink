@@ -24,15 +24,20 @@
 
 ---
 
-CoLink is a reliable cross-platform device connectivity tool. Copy on your phone and paste on your desktop; transfer files between your laptop and tablet. It works seamlessly whether your devices are on the same LAN or connected over the internet.
+CoLink is a cross-platform device connectivity tool that brings everyday sync, remote access, and device control together through a single connection. Whether devices are on the same LAN or connected over the internet, they can collaborate securely.
 
 ## Features
 
 - **Clipboard Sync** — Copy on one device and paste on another. Supports plain text, rich text, and images.
 - **File Transfer** — Send files between devices. Direct LAN transfers have no size limit; cloud relay supports up to 10 MB.
 - **Text Messages** — Send notes and text snippets between devices instantly.
-- **CastBoard** — Turn another device into a live status display for your computer. It pushes track information, album art, and synced lyrics in real time, with support for NetEase Cloud Music, QQ Music, Sogou Music, and Spotify. It also syncs your computer's CPU, memory, network, and other usage metrics. More capabilities are planned.
+- **Remote File Access** — Browse the file system of a remote device and transfer files between connected devices.
+- **Remote Terminal & Device Control** — Open an interactive terminal on a connected computer from your phone; depending on peer support, control power state, media playback, and system volume.
+- **Remote Camera** — View live video from cameras on connected devices.
+- **CastBoard** — Turn another device into a live status display: show now-playing information, album art, and synchronized lyrics (NetEase Cloud Music, QQ Music, Sogou Music, and Spotify), and sync CPU, memory, network, and other system metrics from your computer.
 - **Direct LAN Connection** — Devices on the same network discover each other automatically through mDNS and connect directly without going through the cloud.
+
+Remote access and control features depend on the client version, platform capabilities, and granted permissions on both devices.
 
 | Platform Support | App | Status |
 |------|------|------|
@@ -42,7 +47,7 @@ CoLink is a reliable cross-platform device connectivity tool. Copy on your phone
 | Android  | colink-android | ✅ Available |
 | iOS      | colink-ios     | 🚧 Planned |
 
-## Preview
+## Interface Preview
 
 | Device List | Message List | Message Page |
 |:---:|:---:|:---:|
@@ -81,7 +86,7 @@ https://www.youtube.com/watch?v=w7pMdKMIfjg
 
 1. Open the client and sign up.
 2. Pair devices on the same LAN via the 6-digit pairing code, or connect remotely through the server relay.
-3. Start syncing clipboard, sending files, or streaming CastBoard.
+3. Start syncing clipboard, sending files and messages, or using remote access, device control, and CastBoard.
 
 ### Self-hosting (Optional)
 
@@ -135,7 +140,7 @@ This project uses a multi-repository structure. Each component is maintained ind
 | [colink-android](https://github.com/CoLinkDev/colink-android) | Kotlin, Jetpack Compose | Android client |
 | [colink-castboard](https://github.com/CoLinkDev/colink-castboard) | TypeScript | Standalone CastBoard project |
 | [colink-frontend](https://github.com/CoLinkDev/colink-frontend) | Vue 3, TypeScript | Account and session management web frontend |
-| [CoLinkProtocol](https://github.com/CoLinkDev/CoLinkProtocol) | Markdown | Protocol specifications and API documentation |
+| [CoLinkProtocol](https://github.com/CoLinkDev/CoLinkProtocol) | Markdown | Protocol specifications and API documentation (hosted documentation: [CoLink Protocol](https://colinkdev.github.io/CoLinkProtocol/)) |
 
 Clone the root repository and all sub-repositories into the same parent directory:
 

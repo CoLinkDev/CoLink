@@ -15,15 +15,20 @@
 
 ---
 
-CoLink는 안정적인 크로스 플랫폼 기기 연결 도구입니다. 휴대폰에서 복사하고 데스크톱에서 붙여넣거나, 노트북과 태블릿 사이에서 파일을 전송할 수 있습니다. 기기가 같은 LAN에 있든 인터넷을 통해 연결되어 있든 끊김 없이 동작합니다.
+CoLink은 일상적인 동기화, 원격 액세스, 기기 제어를 하나의 연결로 통합하는 크로스플랫폼 기기 연결 도구입니다. 기기가 같은 LAN에 있거나 인터넷을 통해 연결되어 있어도 안전하게 협업할 수 있습니다.
 
 ## 기능
 
 - **클립보드 동기화** — 한 기기에서 복사하고 다른 기기에서 붙여넣습니다. 일반 텍스트, 리치 텍스트, 이미지를 지원합니다.
 - **파일 전송** — 기기 사이에서 파일을 보냅니다. LAN 직접 전송에는 크기 제한이 없으며, 클라우드 릴레이는 최대 10 MB를 지원합니다.
 - **텍스트 메시지** — 메모와 텍스트 조각을 기기 사이에서 즉시 보냅니다.
-- **CastBoard** — 다른 기기를 컴퓨터의 실시간 상태 표시 화면으로 바꿉니다. 트랙 정보, 앨범 아트, 동기화 가사를 실시간으로 전송하며 NetEase Cloud Music, QQ Music, Sogou Music, Spotify를 지원합니다. 컴퓨터의 CPU, 메모리, 네트워크 등의 사용률도 동기화합니다. 더 많은 기능이 추가될 예정입니다.
+- **원격 파일 액세스** — 원격 기기의 파일 시스템을 탐색하고 연결된 기기 간에 파일을 전송합니다.
+- **원격 터미널 및 기기 제어** — 휴대폰에서 연결된 컴퓨터의 대화형 터미널을 열고, 상대 기기 지원 여부에 따라 전원 상태, 미디어 재생, 시스템 볼륨을 제어합니다.
+- **원격 카메라** — 연결된 기기의 카메라 영상을 실시간으로 확인합니다.
+- **CastBoard** — 다른 기기를 실시간 상태 화면으로 바꿉니다. 현재 재생 정보, 앨범 아트, 동기화 가사(NetEase Cloud Music, QQ Music, Sogou Music, Spotify)를 표시하고 컴퓨터의 CPU, 메모리, 네트워크 등 시스템 지표를 동기화합니다.
 - **LAN 직접 연결** — 같은 네트워크의 기기는 mDNS로 자동 발견되고 클라우드를 거치지 않고 직접 연결됩니다.
+
+원격 액세스와 제어 기능은 양쪽 기기의 클라이언트 버전, 플랫폼 기능, 부여된 권한에 따라 달라집니다.
 
 | 지원 플랫폼 | 앱 | 상태 |
 |------|------|------|
@@ -33,7 +38,7 @@ CoLink는 안정적인 크로스 플랫폼 기기 연결 도구입니다. 휴대
 | Android  | colink-android | ✅ 사용 가능 |
 | iOS      | colink-ios     | 🚧 계획 중 |
 
-## 미리 보기
+## 화면 미리보기
 
 | 기기 목록 | 메시지 목록 | 메시지 화면 |
 |:---:|:---:|:---:|
@@ -42,6 +47,21 @@ CoLink는 안정적인 크로스 플랫폼 기기 연결 도구입니다. 휴대
 ### CastBoard Demo
 
 https://www.youtube.com/watch?v=w7pMdKMIfjg
+
+<table>
+  <tr>
+    <td>동기화 가사</td>
+    <td><img src="docs/assets/Screenshot_20260719-172822561.jpg" alt="CastBoard 동기화 가사" width="640" /></td>
+  </tr>
+  <tr>
+    <td>현재 재생</td>
+    <td><img src="docs/assets/Screenshot_20260719-172830971.jpg" alt="CastBoard 현재 재생" width="640" /></td>
+  </tr>
+  <tr>
+    <td>시스템 지표</td>
+    <td><img src="docs/assets/Screenshot_20260719-172840770.jpg" alt="CastBoard 시스템 지표" width="640" /></td>
+  </tr>
+</table>
 
 ## 빠른 시작
 
@@ -57,7 +77,7 @@ https://www.youtube.com/watch?v=w7pMdKMIfjg
 
 1. 클라이언트를 열고 계정을 등록합니다.
 2. 같은 LAN에서는 6자리 페어링 코드로 기기를 페어링하거나, 서버 릴레이를 통해 원격으로 연결합니다.
-3. 클립보드 동기화, 파일 전송 또는 CastBoard 스트리밍을 시작합니다.
+3. 클립보드를 동기화하고 파일과 메시지를 보내거나, 원격 액세스, 기기 제어, CastBoard를 사용합니다.
 
 ### 셀프 호스팅(선택 사항)
 
@@ -110,7 +130,7 @@ Docker로 CoLink 서버를 직접 호스팅할 수 있습니다. 설정 방법�
 | [colink-desktop](https://github.com/CoLinkDev/colink-desktop) | Tauri 2.x (Rust + React/TS) | Windows, macOS, Linux용 데스크톱 클라이언트 |
 | [colink-android](https://github.com/CoLinkDev/colink-android) | Kotlin, Jetpack Compose | Android 클라이언트 |
 | [colink-frontend](https://github.com/CoLinkDev/colink-frontend) | Vue 3, TypeScript | 계정 및 세션 관리를 위한 Web 프런트엔드 |
-| [CoLinkProtocol](https://github.com/CoLinkDev/CoLinkProtocol) | Markdown | 프로토콜 사양과 API 문서 |
+| [CoLinkProtocol](https://github.com/CoLinkDev/CoLinkProtocol) | Markdown | 프로토콜 사양과 API 문서(호스팅 문서: [CoLink Protocol](https://colinkdev.github.io/CoLinkProtocol/)) |
 
 루트 저장소와 모든 하위 저장소를 같은 상위 디렉터리에 클론합니다.
 
