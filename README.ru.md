@@ -7,6 +7,7 @@
 
 <p align="center">
   <a href="README.md">English</a> •
+  <a href="https://colinkdev.github.io/">Сайт</a> •
   <a href="#возможности">Возможности</a> •
   <a href="#быстрый-старт">Быстрый старт</a> •
   <a href="#архитектура">Архитектура</a> •

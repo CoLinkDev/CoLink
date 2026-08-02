@@ -7,6 +7,7 @@
 
 <p align="center">
   <a href="README.md">English</a> •
+  <a href="https://colinkdev.github.io/">Website</a> •
   <a href="#funktionen">Funktionen</a> •
   <a href="#schnellstart">Schnellstart</a> •
   <a href="#architektur">Architektur</a> •

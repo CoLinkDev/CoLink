@@ -7,6 +7,7 @@
 
 <p align="center">
   <a href="README.md">English</a> •
+  <a href="https://colinkdev.github.io/">網站</a> •
   <a href="#功能">功能</a> •
   <a href="#快速開始">快速開始</a> •
   <a href="#架構">架構</a> •
