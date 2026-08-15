@@ -1,12 +1,12 @@
+<!-- Generated from docs/readme/README.md.j2 and docs/readme/locales/*.yml. Run: uv run docs/readme/generate.py -->
+
 <p align="center">
   <img src="docs/assets/colink-logo.svg" alt="CoLink Logo" width="120" />
 </p>
-<p align="center">
-  <p align="center">CoLink • 連接你的所有裝置，無縫協作。</p>
-</p>
+<p align="center">CoLink • 連接你的所有裝置，無縫協作。</p>
 
+<p align="center"><a href="README.md">English</a></p>
 <p align="center">
-  <a href="README.md">English</a> •
   <a href="https://colinkdev.github.io/">網站</a> •
   <a href="#功能">功能</a> •
   <a href="#快速開始">快速開始</a> •
@@ -33,11 +33,12 @@ CoLink 是一款跨平台裝置互聯工具，將日常同步、遠端存取和�
 
 | 平台支援 | 應用程式 | 狀態 |
 |------|------|------|
-| Windows  | colink-desktop | ✅ 可用 |
-| macOS    | colink-desktop | 🚧 即將可用 |
-| Linux    | colink-desktop | ✅ 可用 |
-| Android  | colink-android | ✅ 可用 |
-| iOS      | colink-ios     | 🚧 規劃中 |
+| Windows | colink-desktop | ✅ 可用 |
+| macOS | colink-desktop | 🚧 即將可用 |
+| Linux | colink-desktop | ✅ 可用 |
+| Android | colink-android | ✅ 可用 |
+| iOS | colink-ios | 🚧 規劃中 |
+
 
 ## 介面預覽
 
@@ -74,6 +75,7 @@ https://www.youtube.com/watch?v=w7pMdKMIfjg
 | Linux | [最新版本](https://github.com/CoLinkDev/colink-desktop/releases/latest) |
 | Android | [最新版本](https://github.com/CoLinkDev/colink-android/releases/latest) |
 
+
 ### 2. 連線
 
 1. 開啟用戶端並註冊帳戶。
@@ -86,32 +88,21 @@ https://www.youtube.com/watch?v=w7pMdKMIfjg
 
 ## 架構
 
-```
-                        ┌─────────────────────┐
-                        │   colink-server     │
-                        │   (Go / Gin)        │
-                        │   REST + WS Relay   │
-                        └────────┬────────────┘
-                                 │
-               HTTPS / WSS       │       HTTPS / WSS
-        ┌────────────────────────┼────────────────────────┐
-        │                        │                        │
-        ▼                        ▼                        ▼
-┌───────────────┐      ┌────────────────┐       ┌─────────────────┐
-│ colink-desktop│      │ colink-android │       │ colink-frontend │
-│ Tauri 2.x     │      │ Kotlin/Compose │       │ Vue 3 Web App   │
-│ Win/Mac/Linux │      │ Android        │       │ 帳戶管理         │
-└───────┬───────┘      └───────┬────────┘       └─────────────────┘
-        │                      │
-        │  LAN (mDNS + WS)     │
-        └──────────────────────┘
+```mermaid
+flowchart TB
+  Server["colink-server<br/>Go · Gin · GORM · PostgreSQL<br/>REST API · WebSocket 中繼"]
+  Desktop["colink-desktop<br/>Tauri 2 · Rust · React"]
+  Android["colink-android<br/>Kotlin · Jetpack Compose"]
+
+  Server <-->|HTTPS / WSS| Desktop
+  Server <-->|HTTPS / WSS| Android
+  Desktop <-.->|區域網路直連 P2P<br/>mDNS · WebSocket · E2EE| Android
 ```
 
 | 通訊路徑 | 傳輸協定 | 用途 |
 |------|----------|------|
 | 用戶端 ↔ 伺服器 | HTTPS + WSS | 認證、裝置管理、雲端中繼 |
 | 用戶端 ↔ 用戶端（區域網路） | mDNS + WebSocket | 同一網路下的直連 P2P |
-| 前端 ↔ 伺服器 | HTTPS | 帳戶管理 |
 
 ## 安全性
 
@@ -130,7 +121,7 @@ https://www.youtube.com/watch?v=w7pMdKMIfjg
 | [colink-server](https://github.com/CoLinkDev/colink-server) | Go, Gin, GORM, PostgreSQL | 後端 API 伺服器與 WebSocket 中繼 |
 | [colink-desktop](https://github.com/CoLinkDev/colink-desktop) | Tauri 2.x (Rust + React/TS) | 桌面用戶端（Windows、macOS、Linux） |
 | [colink-android](https://github.com/CoLinkDev/colink-android) | Kotlin, Jetpack Compose | Android 用戶端 |
-| [colink-frontend](https://github.com/CoLinkDev/colink-frontend) | Vue 3, TypeScript | 帳戶與工作階段管理 Web 前端 |
+| [colink-castboard](https://github.com/CoLinkDev/colink-castboard) | TypeScript | 獨立的 CastBoard 專案 |
 | [CoLinkProtocol](https://github.com/CoLinkDev/CoLinkProtocol) | Markdown | 協定規範與 API 文件（託管文件：[CoLink Protocol](https://colinkdev.github.io/CoLinkProtocol/)） |
 
 將主儲存庫和所有子儲存庫複製到同一父目錄下：
@@ -141,7 +132,7 @@ cd CoLink
 git clone https://github.com/CoLinkDev/colink-server.git
 git clone https://github.com/CoLinkDev/colink-desktop.git
 git clone https://github.com/CoLinkDev/colink-android.git
-git clone https://github.com/CoLinkDev/colink-frontend.git
+git clone https://github.com/CoLinkDev/colink-castboard.git
 git clone https://github.com/CoLinkDev/CoLinkProtocol.git
 ```
 
@@ -152,4 +143,4 @@ git clone https://github.com/CoLinkDev/CoLinkProtocol.git
 - **伺服器** — `colink-server/README.md`
 - **桌面端** — `colink-desktop/README.md`
 - **Android** — `colink-android/README.md`
-- **前端** — `colink-frontend/README.md`
+- **CastBoard** — `colink-castboard/README.md`

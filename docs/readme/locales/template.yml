@@ -1,0 +1,155 @@
+# Copy this file to a locale-specific .yml file and replace every TODO value.
+# The key structure must remain identical to en.yml.
+
+tagline: TODO
+navigation:
+  website: TODO
+  features: TODO
+  features_anchor: TODO
+  quick_start: TODO
+  quick_start_anchor: TODO
+  architecture: TODO
+  architecture_anchor: TODO
+  development: TODO
+  development_anchor: TODO
+introduction: TODO
+features:
+  title: TODO
+  items:
+  - name: TODO
+    description: TODO
+  - name: TODO
+    description: TODO
+  - name: TODO
+    description: TODO
+  - name: TODO
+    description: TODO
+  - name: TODO
+    description: TODO
+  - name: TODO
+    description: TODO
+  - name: TODO
+    description: TODO
+  - name: TODO
+    description: TODO
+  availability_note: TODO
+platforms:
+  headers:
+    platform: TODO
+    app: TODO
+    status: TODO
+  items:
+  - name: TODO
+    app: TODO
+    status: TODO
+  - name: TODO
+    app: TODO
+    status: TODO
+  - name: TODO
+    app: TODO
+    status: TODO
+  - name: TODO
+    app: TODO
+    status: TODO
+  - name: TODO
+    app: TODO
+    status: TODO
+interface_preview:
+  device_list: TODO
+  message_list: TODO
+  message_page: TODO
+  title: TODO
+  device_list_alt: TODO
+  message_list_alt: TODO
+  message_page_alt: TODO
+castboard_demo:
+  title: TODO
+  items:
+  - label: TODO
+    alt: TODO
+    image: TODO
+  - label: TODO
+    alt: TODO
+    image: TODO
+  - label: TODO
+    alt: TODO
+    image: TODO
+quick_start:
+  title: TODO
+  install_title: TODO
+  platform: TODO
+  download: TODO
+  latest_release: TODO
+  downloads:
+  - TODO
+  - TODO
+  - TODO
+  download_repositories:
+  - TODO
+  - TODO
+  - TODO
+  connect_title: TODO
+  connect_steps:
+  - TODO
+  - TODO
+  - TODO
+  self_hosting_title: TODO
+  self_hosting: TODO
+architecture:
+  title: TODO
+  headers:
+    path: TODO
+    transport: TODO
+    purpose: TODO
+  rows:
+  - path: TODO
+    transport: TODO
+    purpose: TODO
+  - path: TODO
+    transport: TODO
+    purpose: TODO
+  server_role: TODO
+  lan_direct: TODO
+security:
+  title: TODO
+  items:
+  - TODO
+  - TODO
+  - TODO
+  - TODO
+  - TODO
+development:
+  title: TODO
+  introduction: TODO
+  headers:
+    repository: TODO
+    stack: TODO
+    description: TODO
+  projects:
+  - repository: TODO
+    stack: TODO
+    description: TODO
+  - repository: TODO
+    stack: TODO
+    description: TODO
+  - repository: TODO
+    stack: TODO
+    description: TODO
+  - repository: TODO
+    stack: TODO
+    description: TODO
+  - repository: TODO
+    stack: TODO
+    description: TODO
+  clone_instruction: TODO
+  build_and_run_title: TODO
+  build_and_run_instruction: TODO
+  readme_projects:
+  - name: TODO
+    path: TODO
+  - name: TODO
+    path: TODO
+  - name: TODO
+    path: TODO
+  - name: TODO
+    path: TODO

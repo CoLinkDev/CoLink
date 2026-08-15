@@ -1,0 +1,33 @@
+locales:
+  - code: en
+    name: English
+    source: locales/en.yml
+    output: README.md
+  - code: zh-CN
+    name: 简体中文
+    source: locales/zh-CN.yml
+    output: README.zhcn.md
+  - code: ja
+    name: 日本語
+    source: locales/ja.yml
+    output: README.ja.md
+  - code: ko
+    name: 한국어
+    source: locales/ko.yml
+    output: README.ko.md
+  - code: zh-TW
+    name: 繁體中文
+    source: locales/zh-TW.yml
+    output: README.zhtw.md
+  - code: de
+    name: Deutsch
+    source: locales/de.yml
+    output: README.de.md
+  - code: es
+    name: Español
+    source: locales/es.yml
+    output: README.es.md
+  - code: ru
+    name: Русский
+    source: locales/ru.yml
+    output: README.ru.md

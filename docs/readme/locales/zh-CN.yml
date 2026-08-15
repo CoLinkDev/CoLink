@@ -1,0 +1,152 @@
+tagline: 连接你的所有设备，无缝协作。
+navigation:
+  website: 网站
+  features: 功能
+  features_anchor: 功能
+  quick_start: 快速开始
+  quick_start_anchor: 快速开始
+  architecture: 架构
+  architecture_anchor: 架构
+  development: 开发
+  development_anchor: 开发
+introduction: CoLink 是一款跨平台设备互联工具，将日常同步、远程访问和设备控制整合在同一套连接中。无论设备处于同一局域网还是通过互联网连接，都能安全协作。
+features:
+  title: 功能
+  items:
+  - name: 剪贴板同步
+    description: 在一台设备上复制，在另一台设备上粘贴。支持纯文本、富文本和图片。
+  - name: 文件传输
+    description: 在设备之间发送文件。局域网传输直连无大小限制；云端中继最大支持 10 MB。
+  - name: 文本消息
+    description: 在设备之间即时发送笔记和文本片段。
+  - name: 远程文件访问
+    description: 浏览远程设备的文件系统，并在已连接设备之间传输文件。
+  - name: 远程终端与设备控制
+    description: 在手机上打开已连接电脑的交互式终端；按对端支持情况控制电源状态、媒体播放和系统音量。
+  - name: 远程摄像头
+    description: 查看已连接设备的摄像头实时画面。
+  - name: CastBoard
+    description: 将另一台设备变成实时状态屏：显示当前播放的音乐、专辑封面与同步歌词（支持网易云音乐、QQ音乐、搜狗音乐、Spotify），并同步电脑的 CPU、内存、网络等系统指标。
+  - name: 局域网直连
+    description: 同一网络下的设备通过 mDNS 自动发现并直连，完全绕过云端。
+  availability_note: 远程访问与控制功能取决于两端客户端版本、平台能力和授予的权限。
+platforms:
+  headers:
+    platform: 平台支持
+    app: 应用
+    status: 状态
+  items:
+  - name: Windows
+    app: colink-desktop
+    status: ✅ 可用
+  - name: macOS
+    app: colink-desktop
+    status: 🚧 即将可用
+  - name: Linux
+    app: colink-desktop
+    status: ✅ 可用
+  - name: Android
+    app: colink-android
+    status: ✅ 可用
+  - name: iOS
+    app: colink-ios
+    status: 🚧 计划中
+interface_preview:
+  device_list: 设备列表
+  message_list: 消息列表
+  message_page: 消息页面
+  title: 界面预览
+  device_list_alt: 设备列表
+  message_list_alt: 消息列表
+  message_page_alt: 消息页面
+castboard_demo:
+  title: CastBoard Demo
+  items:
+  - label: 同步歌词
+    alt: CastBoard 同步歌词
+    image: docs/assets/Screenshot_20260719-172822561.jpg
+  - label: 当前播放
+    alt: CastBoard 当前播放
+    image: docs/assets/Screenshot_20260719-172830971.jpg
+  - label: 系统指标
+    alt: CastBoard 系统指标
+    image: docs/assets/Screenshot_20260719-172840770.jpg
+quick_start:
+  title: 快速开始
+  install_title: 安装客户端
+  platform: 平台
+  download: 下载
+  latest_release: 最新版本
+  downloads:
+  - Windows
+  - Linux
+  - Android
+  download_repositories:
+  - colink-desktop
+  - colink-desktop
+  - colink-android
+  connect_title: 连接
+  connect_steps:
+  - 打开客户端并注册账户。
+  - 通过 6 位配对码在同一局域网内配对设备，或通过服务器中继远程连接。
+  - 开始同步剪贴板、发送文件和消息，或使用远程访问、设备控制与 CastBoard。
+  self_hosting_title: 自托管（可选）
+  self_hosting: 你可以使用 Docker 自托管 CoLink 服务器。部署说明见 [colink-server](https://github.com/CoLinkDev/colink-server)。
+architecture:
+  title: 架构
+  headers:
+    path: 通信路径
+    transport: 传输协议
+    purpose: 用途
+  rows:
+  - path: 客户端 ↔ 服务器
+    transport: HTTPS + WSS
+    purpose: 认证、设备管理、云端中继
+  - path: 客户端 ↔ 客户端（局域网）
+    transport: mDNS + WebSocket
+    purpose: 同一网络下的直连 P2P
+  server_role: REST API · WebSocket 中继
+  lan_direct: 局域网直连 P2P
+security:
+  title: 安全性
+  items:
+  - 每台设备持有独立的 Ed25519 密钥对，作为不可伪造的密码学身份，支持在线轮换
+  - 局域网连接通过四步双向握手建立互信，首次配对使用 SHA-256 派生的 6 位配对码防止 MITM
+  - 局域网消息端到端加密：X25519 ECDH 密钥协商 + HKDF-SHA256 派生会话密钥 + AES-256-GCM/ChaCha20-Poly1305 AEAD
+  - JWT Access Token 有效期 15 分钟；Refresh Token 单次使用后立即轮换，旧令牌标记撤销以检测重放
+  - 服务端不持久化任何消息、文件或剪贴板内容，仅存储账户与设备元数据
+development:
+  title: 开发
+  introduction: 本项目采用多仓库结构，各组件独立维护：
+  headers:
+    repository: 仓库
+    stack: 技术栈
+    description: 描述
+  projects:
+  - repository: colink-server
+    stack: Go, Gin, GORM, PostgreSQL
+    description: 后端 API 服务器与 WebSocket 中继
+  - repository: colink-desktop
+    stack: Tauri 2.x (Rust + React/TS)
+    description: 桌面客户端（Windows、macOS、Linux）
+  - repository: colink-android
+    stack: Kotlin, Jetpack Compose
+    description: Android 客户端
+  - repository: colink-castboard
+    stack: TypeScript
+    description: 独立的 CastBoard 项目
+  - repository: CoLinkProtocol
+    stack: Markdown
+    description: 协议规范与 API 文档（在线托管文档：[CoLink Protocol](https://colinkdev.github.io/CoLinkProtocol/)）
+  clone_instruction: 将主仓库和所有子仓库克隆到同一父目录下：
+  build_and_run_title: 构建与运行
+  build_and_run_instruction: 各子项目有各自的配置说明，请参考对应的 README：
+  readme_projects:
+  - name: 服务端
+    path: colink-server/README.md
+  - name: 桌面端
+    path: colink-desktop/README.md
+  - name: Android
+    path: colink-android/README.md
+  - name: CastBoard
+    path: colink-castboard/README.md

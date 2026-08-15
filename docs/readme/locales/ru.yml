@@ -1,0 +1,152 @@
+tagline: Подключайте все свои устройства и работайте без разрывов.
+navigation:
+  website: Сайт
+  features: Возможности
+  features_anchor: возможности
+  quick_start: Быстрый старт
+  quick_start_anchor: быстрый-старт
+  architecture: Архитектура
+  architecture_anchor: архитектура
+  development: Разработка
+  development_anchor: разработка
+introduction: CoLink — кроссплатформенный инструмент для связи устройств, объединяющий повседневную синхронизацию, удалённый доступ и управление устройствами в одном подключении. Устройства могут безопасно взаимодействовать как в одной LAN, так и через интернет.
+features:
+  title: Возможности
+  items:
+  - name: Синхронизация буфера обмена
+    description: Копируйте на одном устройстве и вставляйте на другом. Поддерживаются обычный текст, форматированный текст и изображения.
+  - name: Передача файлов
+    description: Отправляйте файлы между устройствами. Прямая передача по LAN не имеет ограничения размера; облачный ретранслятор поддерживает до 10 MB.
+  - name: Текстовые сообщения
+    description: Мгновенно отправляйте заметки и фрагменты текста между устройствами.
+  - name: Удалённый доступ к файлам
+    description: Просматривайте файловую систему удалённого устройства и передавайте файлы между подключёнными устройствами.
+  - name: Удалённый терминал и управление устройствами
+    description: Открывайте интерактивный терминал на подключённом компьютере со смартфона; в зависимости от поддержки удалённого устройства управляйте питанием, воспроизведением мультимедиа и системной громкостью.
+  - name: Удалённая камера
+    description: Просматривайте видео в реальном времени с камер подключённых устройств.
+  - name: CastBoard
+    description: 'Превратите другое устройство в экран состояния в реальном времени: отображайте текущую композицию, обложку альбома и синхронизированные тексты песен (NetEase Cloud Music, QQ Music, Sogou Music и Spotify), а также синхронизируйте CPU, память, сеть и другие системные показатели компьютера.'
+  - name: Прямое подключение по LAN
+    description: Устройства в одной сети автоматически обнаруживают друг друга через mDNS и подключаются напрямую, полностью минуя облако.
+  availability_note: Функции удалённого доступа и управления зависят от версии клиента, возможностей платформы и выданных разрешений на обоих устройствах.
+platforms:
+  headers:
+    platform: Поддержка платформ
+    app: Приложение
+    status: Статус
+  items:
+  - name: Windows
+    app: colink-desktop
+    status: ✅ Доступно
+  - name: macOS
+    app: colink-desktop
+    status: 🚧 Скоро
+  - name: Linux
+    app: colink-desktop
+    status: ✅ Доступно
+  - name: Android
+    app: colink-android
+    status: ✅ Доступно
+  - name: iOS
+    app: colink-ios
+    status: 🚧 В планах
+interface_preview:
+  device_list: Список устройств
+  message_list: Список сообщений
+  message_page: Страница сообщения
+  title: Предпросмотр интерфейса
+  device_list_alt: Список устройств
+  message_list_alt: Список сообщений
+  message_page_alt: Страница сообщения
+castboard_demo:
+  title: CastBoard Demo
+  items:
+  - label: Синхронизированные тексты песен
+    alt: Синхронизированные тексты CastBoard
+    image: docs/assets/Screenshot_20260719-172822561.jpg
+  - label: Текущее воспроизведение
+    alt: Текущее воспроизведение CastBoard
+    image: docs/assets/Screenshot_20260719-172830971.jpg
+  - label: Системные показатели
+    alt: Системные показатели CastBoard
+    image: docs/assets/Screenshot_20260719-172840770.jpg
+quick_start:
+  title: Быстрый старт
+  install_title: Установите клиент
+  platform: Платформа
+  download: Загрузка
+  latest_release: Последний релиз
+  downloads:
+  - Windows
+  - Linux
+  - Android
+  download_repositories:
+  - colink-desktop
+  - colink-desktop
+  - colink-android
+  connect_title: Подключение
+  connect_steps:
+  - Откройте клиент и зарегистрируйте аккаунт.
+  - Сопрягите устройства в одной LAN с помощью 6-значного кода или подключитесь удаленно через серверный ретранслятор.
+  - Начните синхронизировать буфер обмена, отправлять файлы и сообщения или используйте удалённый доступ, управление устройствами и CastBoard.
+  self_hosting_title: Самостоятельный хостинг (необязательно)
+  self_hosting: Сервер CoLink можно самостоятельно разместить с помощью Docker. Инструкции по настройке см. в [colink-server](https://github.com/CoLinkDev/colink-server).
+architecture:
+  title: Архитектура
+  headers:
+    path: Канал связи
+    transport: Транспорт
+    purpose: Назначение
+  rows:
+  - path: Клиент ↔ Сервер
+    transport: HTTPS + WSS
+    purpose: Аутентификация, управление устройствами, облачный ретранслятор
+  - path: Клиент ↔ Клиент (LAN)
+    transport: mDNS + WebSocket
+    purpose: Прямой P2P в одной сети
+  server_role: REST API · WebSocket-ретранслятор
+  lan_direct: Прямой P2P по LAN
+security:
+  title: Безопасность
+  items:
+  - Каждое устройство имеет собственную пару ключей Ed25519 как неподделываемую криптографическую идентичность, с поддержкой онлайн-ротации.
+  - LAN-подключения устанавливают взаимное доверие через четырехшаговое взаимное рукопожатие. При первом сопряжении используется 6-значный код, производный от SHA-256, для защиты от MITM.
+  - 'LAN-сообщения шифруются сквозным шифрованием: согласование ключей X25519 ECDH, сеансовые ключи HKDF-SHA256 и AEAD AES-256-GCM/ChaCha20-Poly1305.'
+  - JWT Access Token действителен 15 минут. Refresh Token ротируется сразу после однократного использования, а старые токены помечаются отозванными для обнаружения повторного воспроизведения.
+  - Сервер не сохраняет сообщения, файлы или содержимое буфера обмена. Он хранит только метаданные аккаунтов и устройств.
+development:
+  title: Разработка
+  introduction: 'Проект использует структуру из нескольких репозиториев. Каждый компонент поддерживается независимо:'
+  headers:
+    repository: Репозиторий
+    stack: Технологии
+    description: Описание
+  projects:
+  - repository: colink-server
+    stack: Go, Gin, GORM, PostgreSQL
+    description: Backend API-сервер и WebSocket-ретранслятор
+  - repository: colink-desktop
+    stack: Tauri 2.x (Rust + React/TS)
+    description: Настольный клиент для Windows, macOS и Linux
+  - repository: colink-android
+    stack: Kotlin, Jetpack Compose
+    description: Android-клиент
+  - repository: colink-castboard
+    stack: TypeScript
+    description: Автономный проект CastBoard
+  - repository: CoLinkProtocol
+    stack: Markdown
+    description: 'Спецификации протокола и документация API (размещённая документация: [CoLink Protocol](https://colinkdev.github.io/CoLinkProtocol/))'
+  clone_instruction: 'Клонируйте корневой репозиторий и все подрепозитории в один родительский каталог:'
+  build_and_run_title: Сборка и запуск
+  build_and_run_instruction: 'У каждого подпроекта есть собственные инструкции по настройке. См. соответствующий README:'
+  readme_projects:
+  - name: Сервер
+    path: colink-server/README.md
+  - name: Настольный клиент
+    path: colink-desktop/README.md
+  - name: Android
+    path: colink-android/README.md
+  - name: CastBoard
+    path: colink-castboard/README.md

@@ -1,12 +1,12 @@
+<!-- Generated from docs/readme/README.md.j2 and docs/readme/locales/*.yml. Run: uv run docs/readme/generate.py -->
+
 <p align="center">
   <img src="docs/assets/colink-logo.svg" alt="CoLink Logo" width="120" />
 </p>
-<p align="center">
-  <p align="center">CoLink • 모든 기기를 연결해 끊김 없이 협업합니다.</p>
-</p>
+<p align="center">CoLink • 모든 기기를 연결해 끊김 없이 협업합니다.</p>
 
+<p align="center"><a href="README.md">English</a></p>
 <p align="center">
-  <a href="README.md">English</a> •
   <a href="https://colinkdev.github.io/">웹사이트</a> •
   <a href="#기능">기능</a> •
   <a href="#빠른-시작">빠른 시작</a> •
@@ -33,11 +33,12 @@ CoLink은 일상적인 동기화, 원격 액세스, 기기 제어를 하나의 �
 
 | 지원 플랫폼 | 앱 | 상태 |
 |------|------|------|
-| Windows  | colink-desktop | ✅ 사용 가능 |
-| macOS    | colink-desktop | 🚧 곧 제공 |
-| Linux    | colink-desktop | ✅ 사용 가능 |
-| Android  | colink-android | ✅ 사용 가능 |
-| iOS      | colink-ios     | 🚧 계획 중 |
+| Windows | colink-desktop | ✅ 사용 가능 |
+| macOS | colink-desktop | 🚧 곧 제공 |
+| Linux | colink-desktop | ✅ 사용 가능 |
+| Android | colink-android | ✅ 사용 가능 |
+| iOS | colink-ios | 🚧 계획 중 |
+
 
 ## 화면 미리보기
 
@@ -74,6 +75,7 @@ https://www.youtube.com/watch?v=w7pMdKMIfjg
 | Linux | [최신 릴리스](https://github.com/CoLinkDev/colink-desktop/releases/latest) |
 | Android | [최신 릴리스](https://github.com/CoLinkDev/colink-android/releases/latest) |
 
+
 ### 2. 연결
 
 1. 클라이언트를 열고 계정을 등록합니다.
@@ -86,32 +88,21 @@ Docker로 CoLink 서버를 직접 호스팅할 수 있습니다. 설정 방법�
 
 ## 아키텍처
 
-```
-                        ┌─────────────────────┐
-                        │   colink-server     │
-                        │   (Go / Gin)        │
-                        │   REST + WS Relay   │
-                        └────────┬────────────┘
-                                 │
-               HTTPS / WSS       │       HTTPS / WSS
-        ┌────────────────────────┼────────────────────────┐
-        │                        │                        │
-        ▼                        ▼                        ▼
-┌───────────────┐      ┌────────────────┐       ┌─────────────────┐
-│ colink-desktop│      │ colink-android │       │ colink-frontend │
-│ Tauri 2.x     │      │ Kotlin/Compose │       │ Vue 3 Web App   │
-│ Win/Mac/Linux │      │ Android        │       │ 계정 관리        │
-└───────┬───────┘      └───────┬────────┘       └─────────────────┘
-        │                      │
-        │  LAN (mDNS + WS)     │
-        └──────────────────────┘
+```mermaid
+flowchart TB
+  Server["colink-server<br/>Go · Gin · GORM · PostgreSQL<br/>REST API · WebSocket 릴레이"]
+  Desktop["colink-desktop<br/>Tauri 2 · Rust · React"]
+  Android["colink-android<br/>Kotlin · Jetpack Compose"]
+
+  Server <-->|HTTPS / WSS| Desktop
+  Server <-->|HTTPS / WSS| Android
+  Desktop <-.->|LAN 직접 P2P<br/>mDNS · WebSocket · E2EE| Android
 ```
 
 | 통신 경로 | 전송 방식 | 용도 |
 |------|----------|------|
 | 클라이언트 ↔ 서버 | HTTPS + WSS | 인증, 기기 관리, 클라우드 릴레이 |
 | 클라이언트 ↔ 클라이언트(LAN) | mDNS + WebSocket | 같은 네트워크에서 직접 P2P |
-| 프런트엔드 ↔ 서버 | HTTPS | 계정 관리 |
 
 ## 보안
 
@@ -130,7 +121,7 @@ Docker로 CoLink 서버를 직접 호스팅할 수 있습니다. 설정 방법�
 | [colink-server](https://github.com/CoLinkDev/colink-server) | Go, Gin, GORM, PostgreSQL | 백엔드 API 서버와 WebSocket 릴레이 |
 | [colink-desktop](https://github.com/CoLinkDev/colink-desktop) | Tauri 2.x (Rust + React/TS) | Windows, macOS, Linux용 데스크톱 클라이언트 |
 | [colink-android](https://github.com/CoLinkDev/colink-android) | Kotlin, Jetpack Compose | Android 클라이언트 |
-| [colink-frontend](https://github.com/CoLinkDev/colink-frontend) | Vue 3, TypeScript | 계정 및 세션 관리를 위한 Web 프런트엔드 |
+| [colink-castboard](https://github.com/CoLinkDev/colink-castboard) | TypeScript | 독립형 CastBoard 프로젝트 |
 | [CoLinkProtocol](https://github.com/CoLinkDev/CoLinkProtocol) | Markdown | 프로토콜 사양과 API 문서(호스팅 문서: [CoLink Protocol](https://colinkdev.github.io/CoLinkProtocol/)) |
 
 루트 저장소와 모든 하위 저장소를 같은 상위 디렉터리에 클론합니다.
@@ -141,7 +132,7 @@ cd CoLink
 git clone https://github.com/CoLinkDev/colink-server.git
 git clone https://github.com/CoLinkDev/colink-desktop.git
 git clone https://github.com/CoLinkDev/colink-android.git
-git clone https://github.com/CoLinkDev/colink-frontend.git
+git clone https://github.com/CoLinkDev/colink-castboard.git
 git clone https://github.com/CoLinkDev/CoLinkProtocol.git
 ```
 
@@ -152,4 +143,4 @@ git clone https://github.com/CoLinkDev/CoLinkProtocol.git
 - **서버** — `colink-server/README.md`
 - **데스크톱** — `colink-desktop/README.md`
 - **Android** — `colink-android/README.md`
-- **프런트엔드** — `colink-frontend/README.md`
+- **CastBoard** — `colink-castboard/README.md`

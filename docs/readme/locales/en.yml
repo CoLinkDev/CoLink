@@ -1,0 +1,152 @@
+tagline: Connect all your devices for seamless collaboration.
+navigation:
+  website: Website
+  features: Features
+  features_anchor: features
+  quick_start: Quick Start
+  quick_start_anchor: quickstart
+  architecture: Architecture
+  architecture_anchor: architecture
+  development: Development
+  development_anchor: development
+introduction: CoLink is a cross-platform device connectivity tool that brings everyday sync, remote access, and device control together through a single connection. Whether devices are on the same LAN or connected over the internet, they can collaborate securely.
+features:
+  title: Features
+  items:
+  - name: Clipboard Sync
+    description: Copy on one device and paste on another. Supports plain text, rich text, and images.
+  - name: File Transfer
+    description: Send files between devices. Direct LAN transfers have no size limit; cloud relay supports up to 10 MB.
+  - name: Text Messages
+    description: Send notes and text snippets between devices instantly.
+  - name: Remote File Access
+    description: Browse the file system of a remote device and transfer files between connected devices.
+  - name: Remote Terminal & Device Control
+    description: Open an interactive terminal on a connected computer from your phone; depending on peer support, control power state, media playback, and system volume.
+  - name: Remote Camera
+    description: View live video from cameras on connected devices.
+  - name: CastBoard
+    description: 'Turn another device into a live status display: show now-playing information, album art, and synchronized lyrics (NetEase Cloud Music, QQ Music, Sogou Music, and Spotify), and sync CPU, memory, network, and other system metrics from your computer.'
+  - name: Direct LAN Connection
+    description: Devices on the same network discover each other automatically through mDNS and connect directly without going through the cloud.
+  availability_note: Remote access and control features depend on the client version, platform capabilities, and granted permissions on both devices.
+platforms:
+  headers:
+    platform: Platform Support
+    app: App
+    status: Status
+  items:
+  - name: Windows
+    app: colink-desktop
+    status: ✅ Available
+  - name: macOS
+    app: colink-desktop
+    status: 🚧 Coming soon
+  - name: Linux
+    app: colink-desktop
+    status: ✅ Available
+  - name: Android
+    app: colink-android
+    status: ✅ Available
+  - name: iOS
+    app: colink-ios
+    status: 🚧 Planned
+interface_preview:
+  device_list: Device List
+  message_list: Message List
+  message_page: Message Page
+  title: Interface Preview
+  device_list_alt: Device list
+  message_list_alt: Message list
+  message_page_alt: Message page
+castboard_demo:
+  title: CastBoard Demo
+  items:
+  - label: Synchronized Lyrics
+    alt: CastBoard synchronized lyrics
+    image: docs/assets/Screenshot_20260719-172822561.jpg
+  - label: Now Playing
+    alt: CastBoard now playing
+    image: docs/assets/Screenshot_20260719-172830971.jpg
+  - label: System Metrics
+    alt: CastBoard system metrics
+    image: docs/assets/Screenshot_20260719-172840770.jpg
+quick_start:
+  title: Quick Start
+  install_title: Install a Client
+  platform: Platform
+  download: Download
+  latest_release: Latest Release
+  downloads:
+  - Windows
+  - Linux
+  - Android
+  download_repositories:
+  - colink-desktop
+  - colink-desktop
+  - colink-android
+  connect_title: Connect
+  connect_steps:
+  - Open the client and sign up.
+  - Pair devices on the same LAN via the 6-digit pairing code, or connect remotely through the server relay.
+  - Start syncing clipboard, sending files and messages, or using remote access, device control, and CastBoard.
+  self_hosting_title: Self-hosting (Optional)
+  self_hosting: You can self-host the CoLink server using Docker. See [colink-server](https://github.com/CoLinkDev/colink-server) for setup instructions.
+architecture:
+  title: Architecture
+  headers:
+    path: Communication Path
+    transport: Transport
+    purpose: Purpose
+  rows:
+  - path: Client ↔ Server
+    transport: HTTPS + WSS
+    purpose: Authentication, device management, cloud relay
+  - path: Client ↔ Client (LAN)
+    transport: mDNS + WebSocket
+    purpose: Direct P2P on the same network
+  server_role: REST API · WebSocket Relay
+  lan_direct: Direct LAN P2P
+security:
+  title: Security
+  items:
+  - Each device has its own Ed25519 key pair as a non-forgeable cryptographic identity, with online rotation support.
+  - LAN connections establish mutual trust through a four-step mutual handshake. First-time pairing uses a SHA-256-derived 6-digit pairing code to prevent MITM attacks.
+  - LAN messages are end-to-end encrypted with X25519 ECDH key agreement, HKDF-SHA256 session keys, and AES-256-GCM/ChaCha20-Poly1305 AEAD.
+  - JWT access tokens are valid for 15 minutes. Refresh tokens are rotated immediately after single use, and old tokens are marked revoked to detect replay.
+  - The server does not persist messages, files, or clipboard contents. It only stores account and device metadata.
+development:
+  title: Development
+  introduction: 'This project uses a multi-repository structure. Each component is maintained independently:'
+  headers:
+    repository: Repository
+    stack: Tech Stack
+    description: Description
+  projects:
+  - repository: colink-server
+    stack: Go, Gin, GORM, PostgreSQL
+    description: Backend API server and WebSocket relay
+  - repository: colink-desktop
+    stack: Tauri 2.x (Rust + React/TS)
+    description: Desktop client for Windows, macOS, and Linux
+  - repository: colink-android
+    stack: Kotlin, Jetpack Compose
+    description: Android client
+  - repository: colink-castboard
+    stack: TypeScript
+    description: Standalone CastBoard project
+  - repository: CoLinkProtocol
+    stack: Markdown
+    description: 'Protocol specifications and API documentation (hosted documentation: [CoLink Protocol](https://colinkdev.github.io/CoLinkProtocol/))'
+  clone_instruction: 'Clone the root repository and all sub-repositories into the same parent directory:'
+  build_and_run_title: Build and Run
+  build_and_run_instruction: 'Each sub-project has its own setup instructions. See the corresponding README:'
+  readme_projects:
+  - name: Server
+    path: colink-server/README.md
+  - name: Desktop
+    path: colink-desktop/README.md
+  - name: Android
+    path: colink-android/README.md
+  - name: CastBoard
+    path: colink-castboard/README.md

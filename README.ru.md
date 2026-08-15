@@ -1,12 +1,12 @@
+<!-- Generated from docs/readme/README.md.j2 and docs/readme/locales/*.yml. Run: uv run docs/readme/generate.py -->
+
 <p align="center">
   <img src="docs/assets/colink-logo.svg" alt="CoLink Logo" width="120" />
 </p>
-<p align="center">
-  <p align="center">CoLink • Подключайте все свои устройства и работайте без разрывов.</p>
-</p>
+<p align="center">CoLink • Подключайте все свои устройства и работайте без разрывов.</p>
 
+<p align="center"><a href="README.md">English</a></p>
 <p align="center">
-  <a href="README.md">English</a> •
   <a href="https://colinkdev.github.io/">Сайт</a> •
   <a href="#возможности">Возможности</a> •
   <a href="#быстрый-старт">Быстрый старт</a> •
@@ -33,11 +33,12 @@ CoLink — кроссплатформенный инструмент для св
 
 | Поддержка платформ | Приложение | Статус |
 |------|------|------|
-| Windows  | colink-desktop | ✅ Доступно |
-| macOS    | colink-desktop | 🚧 Скоро |
-| Linux    | colink-desktop | ✅ Доступно |
-| Android  | colink-android | ✅ Доступно |
-| iOS      | colink-ios     | 🚧 В планах |
+| Windows | colink-desktop | ✅ Доступно |
+| macOS | colink-desktop | 🚧 Скоро |
+| Linux | colink-desktop | ✅ Доступно |
+| Android | colink-android | ✅ Доступно |
+| iOS | colink-ios | 🚧 В планах |
+
 
 ## Предпросмотр интерфейса
 
@@ -74,6 +75,7 @@ https://www.youtube.com/watch?v=w7pMdKMIfjg
 | Linux | [Последний релиз](https://github.com/CoLinkDev/colink-desktop/releases/latest) |
 | Android | [Последний релиз](https://github.com/CoLinkDev/colink-android/releases/latest) |
 
+
 ### 2. Подключение
 
 1. Откройте клиент и зарегистрируйте аккаунт.
@@ -86,32 +88,21 @@ https://www.youtube.com/watch?v=w7pMdKMIfjg
 
 ## Архитектура
 
-```
-                        ┌─────────────────────┐
-                        │   colink-server     │
-                        │   (Go / Gin)        │
-                        │   REST + WS Relay   │
-                        └────────┬────────────┘
-                                 │
-               HTTPS / WSS       │       HTTPS / WSS
-        ┌────────────────────────┼────────────────────────┐
-        │                        │                        │
-        ▼                        ▼                        ▼
-┌───────────────┐      ┌────────────────┐       ┌─────────────────┐
-│ colink-desktop│      │ colink-android │       │ colink-frontend │
-│ Tauri 2.x     │      │ Kotlin/Compose │       │ Vue 3 Web App   │
-│ Win/Mac/Linux │      │ Android        │       │ Аккаунты        │
-└───────┬───────┘      └───────┬────────┘       └─────────────────┘
-        │                      │
-        │  LAN (mDNS + WS)     │
-        └──────────────────────┘
+```mermaid
+flowchart TB
+  Server["colink-server<br/>Go · Gin · GORM · PostgreSQL<br/>REST API · WebSocket-ретранслятор"]
+  Desktop["colink-desktop<br/>Tauri 2 · Rust · React"]
+  Android["colink-android<br/>Kotlin · Jetpack Compose"]
+
+  Server <-->|HTTPS / WSS| Desktop
+  Server <-->|HTTPS / WSS| Android
+  Desktop <-.->|Прямой P2P по LAN<br/>mDNS · WebSocket · E2EE| Android
 ```
 
 | Канал связи | Транспорт | Назначение |
 |------|----------|------|
 | Клиент ↔ Сервер | HTTPS + WSS | Аутентификация, управление устройствами, облачный ретранслятор |
 | Клиент ↔ Клиент (LAN) | mDNS + WebSocket | Прямой P2P в одной сети |
-| Фронтенд ↔ Сервер | HTTPS | Управление аккаунтом |
 
 ## Безопасность
 
@@ -130,7 +121,7 @@ https://www.youtube.com/watch?v=w7pMdKMIfjg
 | [colink-server](https://github.com/CoLinkDev/colink-server) | Go, Gin, GORM, PostgreSQL | Backend API-сервер и WebSocket-ретранслятор |
 | [colink-desktop](https://github.com/CoLinkDev/colink-desktop) | Tauri 2.x (Rust + React/TS) | Настольный клиент для Windows, macOS и Linux |
 | [colink-android](https://github.com/CoLinkDev/colink-android) | Kotlin, Jetpack Compose | Android-клиент |
-| [colink-frontend](https://github.com/CoLinkDev/colink-frontend) | Vue 3, TypeScript | Web-фронтенд для управления аккаунтами и сеансами |
+| [colink-castboard](https://github.com/CoLinkDev/colink-castboard) | TypeScript | Автономный проект CastBoard |
 | [CoLinkProtocol](https://github.com/CoLinkDev/CoLinkProtocol) | Markdown | Спецификации протокола и документация API (размещённая документация: [CoLink Protocol](https://colinkdev.github.io/CoLinkProtocol/)) |
 
 Клонируйте корневой репозиторий и все подрепозитории в один родительский каталог:
@@ -141,7 +132,7 @@ cd CoLink
 git clone https://github.com/CoLinkDev/colink-server.git
 git clone https://github.com/CoLinkDev/colink-desktop.git
 git clone https://github.com/CoLinkDev/colink-android.git
-git clone https://github.com/CoLinkDev/colink-frontend.git
+git clone https://github.com/CoLinkDev/colink-castboard.git
 git clone https://github.com/CoLinkDev/CoLinkProtocol.git
 ```
 
@@ -152,4 +143,4 @@ git clone https://github.com/CoLinkDev/CoLinkProtocol.git
 - **Сервер** — `colink-server/README.md`
 - **Настольный клиент** — `colink-desktop/README.md`
 - **Android** — `colink-android/README.md`
-- **Фронтенд** — `colink-frontend/README.md`
+- **CastBoard** — `colink-castboard/README.md`

@@ -1,0 +1,112 @@
+<!-- Generated from docs/readme/README.md.j2 and docs/readme/locales/*.yml. Run: uv run docs/readme/generate.py -->
+
+<p align="center">
+  <img src="docs/assets/colink-logo.svg" alt="CoLink Logo" width="120" />
+</p>
+<p align="center">CoLink • {{ t.tagline }}</p>
+
+<p align="center">{% if code == "en" %}{% for locale in locales %}<a href="{{ locale.output }}">{{ locale.name }}</a>{% if not loop.last %} • {% endif %}{% endfor %}{% else %}<a href="README.md">English</a>{% endif %}</p>
+<p align="center">
+  <a href="https://colinkdev.github.io/">{{ t.navigation.website }}</a> •
+  <a href="#{{ t.navigation.features_anchor }}">{{ t.navigation.features }}</a> •
+  <a href="#{{ t.navigation.quick_start_anchor }}">{{ t.navigation.quick_start }}</a> •
+  <a href="#{{ t.navigation.architecture_anchor }}">{{ t.navigation.architecture }}</a> •
+  <a href="#{{ t.navigation.development_anchor }}">{{ t.navigation.development }}</a>
+</p>
+
+---
+
+{{ t.introduction }}
+
+## {{ t.features.title }}
+
+{% for feature in t.features['items'] %}- **{{ feature.name }}** — {{ feature.description }}
+{% endfor %}
+{{ t.features.availability_note }}
+
+| {{ t.platforms.headers.platform }} | {{ t.platforms.headers.app }} | {{ t.platforms.headers.status }} |
+|------|------|------|
+{% for platform in t.platforms['items'] %}| {{ platform.name }} | {{ platform.app }} | {{ platform.status }} |
+{% endfor %}
+
+## {{ t.interface_preview.title }}
+
+| {{ t.interface_preview.device_list }} | {{ t.interface_preview.message_list }} | {{ t.interface_preview.message_page }} |
+|:---:|:---:|:---:|
+| <img src="docs/assets/Screenshot_2026-06-16-01-37-11-165_com.colink.android.debug.jpg" alt="{{ t.interface_preview.device_list_alt }}" width="250" /> | <img src="docs/assets/Screenshot_2026-06-16-01-37-16-481_com.colink.android.debug.jpg" alt="{{ t.interface_preview.message_list_alt }}" width="250" /> | <img src="docs/assets/Screenshot_2026-06-16-01-37-35-883_com.colink.android.debug-edit.jpg" alt="{{ t.interface_preview.message_page_alt }}" width="250" /> |
+
+### {{ t.castboard_demo.title }}
+
+https://www.youtube.com/watch?v=w7pMdKMIfjg
+
+<table>
+{% for item in t.castboard_demo['items'] %}  <tr>
+    <td>{{ item.label }}</td>
+    <td><img src="{{ item.image }}" alt="{{ item.alt }}" width="640" /></td>
+  </tr>
+{% endfor %}</table>
+
+## {{ t.quick_start.title }}
+
+### 1. {{ t.quick_start.install_title }}
+
+| {{ t.quick_start.platform }} | {{ t.quick_start.download }} |
+|----------|----------|
+{% for platform in t.quick_start.downloads %}| {{ platform }} | [{{ t.quick_start.latest_release }}](https://github.com/CoLinkDev/{{ t.quick_start.download_repositories[loop.index0] }}/releases/latest) |
+{% endfor %}
+
+### 2. {{ t.quick_start.connect_title }}
+
+{% for step in t.quick_start.connect_steps %}{{ loop.index }}. {{ step }}
+{% endfor %}
+### {{ t.quick_start.self_hosting_title }}
+
+{{ t.quick_start.self_hosting }}
+
+## {{ t.architecture.title }}
+
+```mermaid
+flowchart TB
+  Server["colink-server<br/>Go · Gin · GORM · PostgreSQL<br/>{{ t.architecture.server_role }}"]
+  Desktop["colink-desktop<br/>Tauri 2 · Rust · React"]
+  Android["colink-android<br/>Kotlin · Jetpack Compose"]
+
+  Server <-->|HTTPS / WSS| Desktop
+  Server <-->|HTTPS / WSS| Android
+  Desktop <-.->|{{ t.architecture.lan_direct }}<br/>mDNS · WebSocket · E2EE| Android
+```
+
+| {{ t.architecture.headers.path }} | {{ t.architecture.headers.transport }} | {{ t.architecture.headers.purpose }} |
+|------|----------|------|
+{% for row in t.architecture.rows %}| {{ row.path }} | {{ row.transport }} | {{ row.purpose }} |
+{% endfor %}
+## {{ t.security.title }}
+
+{% for item in t.security['items'] %}- {{ item }}
+{% endfor %}
+## {{ t.development.title }}
+
+{{ t.development.introduction }}
+
+| {{ t.development.headers.repository }} | {{ t.development.headers.stack }} | {{ t.development.headers.description }} |
+|------|--------|------|
+{% for project in t.development.projects %}| [{{ project.repository }}](https://github.com/CoLinkDev/{{ project.repository }}) | {{ project.stack }} | {{ project.description }} |
+{% endfor %}
+{{ t.development.clone_instruction }}
+
+```bash
+git clone https://github.com/CoLinkDev/CoLink.git
+cd CoLink
+git clone https://github.com/CoLinkDev/colink-server.git
+git clone https://github.com/CoLinkDev/colink-desktop.git
+git clone https://github.com/CoLinkDev/colink-android.git
+git clone https://github.com/CoLinkDev/colink-castboard.git
+git clone https://github.com/CoLinkDev/CoLinkProtocol.git
+```
+
+### {{ t.development.build_and_run_title }}
+
+{{ t.development.build_and_run_instruction }}
+
+{% for project in t.development.readme_projects %}- **{{ project.name }}** — `{{ project.path }}`
+{% endfor %}

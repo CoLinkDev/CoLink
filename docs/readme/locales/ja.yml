@@ -1,0 +1,152 @@
+tagline: すべてのデバイスをつなぎ、シームレスに連携します。
+navigation:
+  website: ウェブサイト
+  features: 機能
+  features_anchor: 機能
+  quick_start: クイックスタート
+  quick_start_anchor: クイックスタート
+  architecture: アーキテクチャ
+  architecture_anchor: アーキテクチャ
+  development: 開発
+  development_anchor: 開発
+introduction: CoLink は、日常的な同期、リモートアクセス、デバイス制御を一つの接続にまとめるクロスプラットフォームのデバイス連携ツールです。デバイスが同じ LAN 上にある場合でもインターネット経由で接続されている場合でも、安全に連携できます。
+features:
+  title: 機能
+  items:
+  - name: クリップボード同期
+    description: あるデバイスでコピーし、別のデバイスで貼り付けます。プレーンテキスト、リッチテキスト、画像に対応しています。
+  - name: ファイル転送
+    description: デバイス間でファイルを送信します。LAN 直結転送にはサイズ制限がなく、クラウドリレーは最大 10 MB まで対応します。
+  - name: テキストメッセージ
+    description: メモやテキスト断片をデバイス間で即座に送信できます。
+  - name: リモートファイルアクセス
+    description: リモートデバイスのファイルシステムを閲覧し、接続済みデバイス間でファイルを転送できます。
+  - name: リモートターミナルとデバイス制御
+    description: スマートフォンから接続済みコンピューターの対話型ターミナルを開き、接続先の対応状況に応じて電源状態、メディア再生、システム音量を制御できます。
+  - name: リモートカメラ
+    description: 接続済みデバイスのカメラ映像をライブで確認できます。
+  - name: CastBoard
+    description: 別のデバイスをライブステータス表示に変えます。現在の再生情報、アルバムアート、同期歌詞（NetEase Cloud Music、QQ Music、Sogou Music、Spotify）を表示し、コンピューターの CPU、メモリ、ネットワークなどのシステム指標を同期します。
+  - name: LAN 直結
+    description: 同じネットワーク上のデバイスは mDNS で自動検出され、クラウドを経由せず直接接続します。
+  availability_note: リモートアクセスと制御の機能は、両方のデバイスのクライアントバージョン、プラットフォーム機能、付与された権限に依存します。
+platforms:
+  headers:
+    platform: 対応プラットフォーム
+    app: アプリ
+    status: 状態
+  items:
+  - name: Windows
+    app: colink-desktop
+    status: ✅ 利用可能
+  - name: macOS
+    app: colink-desktop
+    status: 🚧 近日対応
+  - name: Linux
+    app: colink-desktop
+    status: ✅ 利用可能
+  - name: Android
+    app: colink-android
+    status: ✅ 利用可能
+  - name: iOS
+    app: colink-ios
+    status: 🚧 計画中
+interface_preview:
+  device_list: デバイス一覧
+  message_list: メッセージ一覧
+  message_page: メッセージ画面
+  title: 画面プレビュー
+  device_list_alt: デバイス一覧
+  message_list_alt: メッセージ一覧
+  message_page_alt: メッセージ画面
+castboard_demo:
+  title: CastBoard Demo
+  items:
+  - label: 同期歌詞
+    alt: CastBoard の同期歌詞
+    image: docs/assets/Screenshot_20260719-172822561.jpg
+  - label: 現在の再生
+    alt: CastBoard の現在の再生
+    image: docs/assets/Screenshot_20260719-172830971.jpg
+  - label: システム指標
+    alt: CastBoard のシステム指標
+    image: docs/assets/Screenshot_20260719-172840770.jpg
+quick_start:
+  title: クイックスタート
+  install_title: クライアントをインストール
+  platform: プラットフォーム
+  download: ダウンロード
+  latest_release: 最新リリース
+  downloads:
+  - Windows
+  - Linux
+  - Android
+  download_repositories:
+  - colink-desktop
+  - colink-desktop
+  - colink-android
+  connect_title: 接続
+  connect_steps:
+  - クライアントを開いてアカウントを登録します。
+  - 同じ LAN 上では 6 桁のペアリングコードでデバイスをペアリングし、リモートではサーバーリレー経由で接続します。
+  - クリップボードを同期し、ファイルやメッセージを送信するか、リモートアクセス、デバイス制御、CastBoard を利用します。
+  self_hosting_title: セルフホスティング（任意）
+  self_hosting: Docker を使って CoLink サーバーをセルフホストできます。セットアップ手順は [colink-server](https://github.com/CoLinkDev/colink-server) を参照してください。
+architecture:
+  title: アーキテクチャ
+  headers:
+    path: 通信経路
+    transport: 転送方式
+    purpose: 用途
+  rows:
+  - path: クライアント ↔ サーバー
+    transport: HTTPS + WSS
+    purpose: 認証、デバイス管理、クラウドリレー
+  - path: クライアント ↔ クライアント（LAN）
+    transport: mDNS + WebSocket
+    purpose: 同一ネットワーク内の直接 P2P
+  server_role: REST API · WebSocket リレー
+  lan_direct: LAN 直接 P2P
+security:
+  title: セキュリティ
+  items:
+  - 各デバイスは偽造できない暗号学的 ID として独立した Ed25519 鍵ペアを持ち、オンラインでのローテーションに対応しています。
+  - LAN 接続は 4 ステップの相互ハンドシェイクで信頼を確立します。初回ペアリングでは MITM 攻撃を防ぐため、SHA-256 から派生した 6 桁のペアリングコードを使用します。
+  - LAN メッセージはエンドツーエンドで暗号化されます。X25519 ECDH 鍵合意、HKDF-SHA256 派生セッション鍵、AES-256-GCM/ChaCha20-Poly1305 AEAD を使用します。
+  - JWT Access Token の有効期間は 15 分です。Refresh Token は 1 回の使用後すぐにローテーションされ、古いトークンはリプレイ検出のため失効済みとして記録されます。
+  - サーバーはメッセージ、ファイル、クリップボード内容を永続化せず、アカウントとデバイスのメタデータのみを保存します。
+development:
+  title: 開発
+  introduction: このプロジェクトはマルチリポジトリ構成です。各コンポーネントは独立して管理されています。
+  headers:
+    repository: リポジトリ
+    stack: 技術スタック
+    description: 説明
+  projects:
+  - repository: colink-server
+    stack: Go, Gin, GORM, PostgreSQL
+    description: バックエンド API サーバーと WebSocket リレー
+  - repository: colink-desktop
+    stack: Tauri 2.x (Rust + React/TS)
+    description: Windows、macOS、Linux 向けデスクトップクライアント
+  - repository: colink-android
+    stack: Kotlin, Jetpack Compose
+    description: Android クライアント
+  - repository: colink-castboard
+    stack: TypeScript
+    description: スタンドアロンの CastBoard プロジェクト
+  - repository: CoLinkProtocol
+    stack: Markdown
+    description: 'プロトコル仕様と API ドキュメント（ホストされたドキュメント: [CoLink Protocol](https://colinkdev.github.io/CoLinkProtocol/)）'
+  clone_instruction: ルートリポジトリとすべてのサブリポジトリを同じ親ディレクトリにクローンします。
+  build_and_run_title: ビルドと実行
+  build_and_run_instruction: 各サブプロジェクトにはそれぞれ設定手順があります。対応する README を参照してください。
+  readme_projects:
+  - name: サーバー
+    path: colink-server/README.md
+  - name: デスクトップ
+    path: colink-desktop/README.md
+  - name: Android
+    path: colink-android/README.md
+  - name: CastBoard
+    path: colink-castboard/README.md

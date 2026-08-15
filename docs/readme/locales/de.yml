@@ -1,0 +1,152 @@
+tagline: Verbinde alle deine Geräte und arbeite nahtlos zusammen.
+navigation:
+  website: Website
+  features: Funktionen
+  features_anchor: funktionen
+  quick_start: Schnellstart
+  quick_start_anchor: schnellstart
+  architecture: Architektur
+  architecture_anchor: architektur
+  development: Entwicklung
+  development_anchor: entwicklung
+introduction: CoLink ist ein plattformübergreifendes Werkzeug zur Gerätevernetzung, das alltägliche Synchronisierung, Fernzugriff und Gerätesteuerung über eine gemeinsame Verbindung vereint. Unabhängig davon, ob die Geräte im selben LAN oder über das Internet verbunden sind, können sie sicher zusammenarbeiten.
+features:
+  title: Funktionen
+  items:
+  - name: Zwischenablage-Synchronisierung
+    description: Auf einem Gerät kopieren, auf einem anderen einfügen. Unterstützt Klartext, Rich Text und Bilder.
+  - name: Dateiübertragung
+    description: Dateien zwischen Geräten senden. Direkte LAN-Übertragungen haben keine Größenbeschränkung; Cloud-Relay unterstützt bis zu 10 MB.
+  - name: Textnachrichten
+    description: Notizen und Textausschnitte sofort zwischen Geräten senden.
+  - name: Remote-Dateizugriff
+    description: Durchsuche das Dateisystem eines entfernten Geräts und übertrage Dateien zwischen verbundenen Geräten.
+  - name: Remote-Terminal und Gerätesteuerung
+    description: Öffne vom Smartphone aus ein interaktives Terminal auf einem verbundenen Computer; je nach Unterstützung des Gegenübers lassen sich Energiezustand, Medienwiedergabe und Systemlautstärke steuern.
+  - name: Remote-Kamera
+    description: Sieh dir Livevideo von Kameras verbundener Geräte an.
+  - name: CastBoard
+    description: 'Verwandle ein anderes Gerät in eine Live-Statusanzeige: Zeige aktuelle Wiedergabe, Albumcover und synchronisierte Liedtexte (NetEase Cloud Music, QQ Music, Sogou Music und Spotify) an und synchronisiere CPU-, Arbeitsspeicher-, Netzwerk- und weitere Systemwerte deines Computers.'
+  - name: Direkte LAN-Verbindung
+    description: Geräte im selben Netzwerk finden sich automatisch per mDNS und verbinden sich direkt, vollständig ohne Cloud.
+  availability_note: Funktionen für Fernzugriff und Steuerung hängen von Client-Version, Plattformfähigkeiten und den auf beiden Geräten gewährten Berechtigungen ab.
+platforms:
+  headers:
+    platform: Plattformunterstützung
+    app: App
+    status: Status
+  items:
+  - name: Windows
+    app: colink-desktop
+    status: ✅ Verfügbar
+  - name: macOS
+    app: colink-desktop
+    status: 🚧 Bald verfügbar
+  - name: Linux
+    app: colink-desktop
+    status: ✅ Verfügbar
+  - name: Android
+    app: colink-android
+    status: ✅ Verfügbar
+  - name: iOS
+    app: colink-ios
+    status: 🚧 Geplant
+interface_preview:
+  device_list: Geräteliste
+  message_list: Nachrichtenliste
+  message_page: Nachrichtenseite
+  title: Oberflächenvorschau
+  device_list_alt: Geräteliste
+  message_list_alt: Nachrichtenliste
+  message_page_alt: Nachrichtenseite
+castboard_demo:
+  title: CastBoard Demo
+  items:
+  - label: Synchronisierte Liedtexte
+    alt: Synchronisierte CastBoard-Liedtexte
+    image: docs/assets/Screenshot_20260719-172822561.jpg
+  - label: Aktuelle Wiedergabe
+    alt: Aktuelle CastBoard-Wiedergabe
+    image: docs/assets/Screenshot_20260719-172830971.jpg
+  - label: Systemmetriken
+    alt: CastBoard-Systemmetriken
+    image: docs/assets/Screenshot_20260719-172840770.jpg
+quick_start:
+  title: Schnellstart
+  install_title: Client installieren
+  platform: Plattform
+  download: Download
+  latest_release: Aktuelles Release
+  downloads:
+  - Windows
+  - Linux
+  - Android
+  download_repositories:
+  - colink-desktop
+  - colink-desktop
+  - colink-android
+  connect_title: Verbinden
+  connect_steps:
+  - Öffne den Client und registriere ein Konto.
+  - Kopple Geräte im selben LAN über den sechsstelligen Kopplungscode oder verbinde sie remote über das Server-Relay.
+  - Starte die Zwischenablage-Synchronisierung, sende Dateien und Nachrichten oder nutze Fernzugriff, Gerätesteuerung und CastBoard.
+  self_hosting_title: Self-Hosting (optional)
+  self_hosting: Du kannst den CoLink-Server mit Docker selbst hosten. Die Einrichtung ist unter [colink-server](https://github.com/CoLinkDev/colink-server) beschrieben.
+architecture:
+  title: Architektur
+  headers:
+    path: Kommunikationsweg
+    transport: Transport
+    purpose: Zweck
+  rows:
+  - path: Client ↔ Server
+    transport: HTTPS + WSS
+    purpose: Authentifizierung, Geräteverwaltung, Cloud-Relay
+  - path: Client ↔ Client (LAN)
+    transport: mDNS + WebSocket
+    purpose: Direktes P2P im selben Netzwerk
+  server_role: REST-API · WebSocket-Relay
+  lan_direct: Direktes LAN-P2P
+security:
+  title: Sicherheit
+  items:
+  - Jedes Gerät besitzt ein eigenes Ed25519-Schlüsselpaar als nicht fälschbare kryptografische Identität mit Unterstützung für Online-Rotation.
+  - LAN-Verbindungen bauen gegenseitiges Vertrauen über einen vierstufigen beidseitigen Handshake auf. Die Erstkopplung nutzt einen aus SHA-256 abgeleiteten sechsstelligen Kopplungscode gegen MITM-Angriffe.
+  - 'LAN-Nachrichten sind Ende-zu-Ende-verschlüsselt: X25519-ECDH-Schlüsselaustausch, aus HKDF-SHA256 abgeleitete Sitzungsschlüssel und AES-256-GCM/ChaCha20-Poly1305 AEAD.'
+  - JWT Access Tokens sind 15 Minuten gültig. Refresh Tokens werden nach einmaliger Nutzung sofort rotiert, alte Tokens werden zur Replay-Erkennung widerrufen markiert.
+  - Der Server speichert keine Nachrichten, Dateien oder Zwischenablageinhalte dauerhaft, sondern nur Konto- und Geräte-Metadaten.
+development:
+  title: Entwicklung
+  introduction: 'Dieses Projekt verwendet eine Multi-Repository-Struktur. Jede Komponente wird eigenständig gepflegt:'
+  headers:
+    repository: Repository
+    stack: Technologie
+    description: Beschreibung
+  projects:
+  - repository: colink-server
+    stack: Go, Gin, GORM, PostgreSQL
+    description: Backend-API-Server und WebSocket-Relay
+  - repository: colink-desktop
+    stack: Tauri 2.x (Rust + React/TS)
+    description: Desktop-Client für Windows, macOS und Linux
+  - repository: colink-android
+    stack: Kotlin, Jetpack Compose
+    description: Android-Client
+  - repository: colink-castboard
+    stack: TypeScript
+    description: Eigenständiges CastBoard-Projekt
+  - repository: CoLinkProtocol
+    stack: Markdown
+    description: 'Protokollspezifikationen und API-Dokumentation (gehostete Dokumentation: [CoLink Protocol](https://colinkdev.github.io/CoLinkProtocol/))'
+  clone_instruction: 'Klone das Haupt-Repository und alle Unter-Repositories in dasselbe übergeordnete Verzeichnis:'
+  build_and_run_title: Bauen und Ausführen
+  build_and_run_instruction: 'Jedes Unterprojekt hat eigene Einrichtungsanweisungen. Siehe die jeweilige README:'
+  readme_projects:
+  - name: Server
+    path: colink-server/README.md
+  - name: Desktop
+    path: colink-desktop/README.md
+  - name: Android
+    path: colink-android/README.md
+  - name: CastBoard
+    path: colink-castboard/README.md

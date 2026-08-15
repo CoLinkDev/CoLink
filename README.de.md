@@ -1,12 +1,12 @@
+<!-- Generated from docs/readme/README.md.j2 and docs/readme/locales/*.yml. Run: uv run docs/readme/generate.py -->
+
 <p align="center">
   <img src="docs/assets/colink-logo.svg" alt="CoLink Logo" width="120" />
 </p>
-<p align="center">
-  <p align="center">CoLink • Verbinde alle deine Geräte und arbeite nahtlos zusammen.</p>
-</p>
+<p align="center">CoLink • Verbinde alle deine Geräte und arbeite nahtlos zusammen.</p>
 
+<p align="center"><a href="README.md">English</a></p>
 <p align="center">
-  <a href="README.md">English</a> •
   <a href="https://colinkdev.github.io/">Website</a> •
   <a href="#funktionen">Funktionen</a> •
   <a href="#schnellstart">Schnellstart</a> •
@@ -33,11 +33,12 @@ Funktionen für Fernzugriff und Steuerung hängen von Client-Version, Plattformf
 
 | Plattformunterstützung | App | Status |
 |------|------|------|
-| Windows  | colink-desktop | ✅ Verfügbar |
-| macOS    | colink-desktop | 🚧 Bald verfügbar |
-| Linux    | colink-desktop | ✅ Verfügbar |
-| Android  | colink-android | ✅ Verfügbar |
-| iOS      | colink-ios     | 🚧 Geplant |
+| Windows | colink-desktop | ✅ Verfügbar |
+| macOS | colink-desktop | 🚧 Bald verfügbar |
+| Linux | colink-desktop | ✅ Verfügbar |
+| Android | colink-android | ✅ Verfügbar |
+| iOS | colink-ios | 🚧 Geplant |
+
 
 ## Oberflächenvorschau
 
@@ -74,6 +75,7 @@ https://www.youtube.com/watch?v=w7pMdKMIfjg
 | Linux | [Aktuelles Release](https://github.com/CoLinkDev/colink-desktop/releases/latest) |
 | Android | [Aktuelles Release](https://github.com/CoLinkDev/colink-android/releases/latest) |
 
+
 ### 2. Verbinden
 
 1. Öffne den Client und registriere ein Konto.
@@ -86,32 +88,21 @@ Du kannst den CoLink-Server mit Docker selbst hosten. Die Einrichtung ist unter 
 
 ## Architektur
 
-```
-                        ┌─────────────────────┐
-                        │   colink-server     │
-                        │   (Go / Gin)        │
-                        │   REST + WS Relay   │
-                        └────────┬────────────┘
-                                 │
-               HTTPS / WSS       │       HTTPS / WSS
-        ┌────────────────────────┼────────────────────────┐
-        │                        │                        │
-        ▼                        ▼                        ▼
-┌───────────────┐      ┌────────────────┐       ┌─────────────────┐
-│ colink-desktop│      │ colink-android │       │ colink-frontend │
-│ Tauri 2.x     │      │ Kotlin/Compose │       │ Vue 3 Web App   │
-│ Win/Mac/Linux │      │ Android        │       │ Kontoverwaltung │
-└───────┬───────┘      └───────┬────────┘       └─────────────────┘
-        │                      │
-        │  LAN (mDNS + WS)     │
-        └──────────────────────┘
+```mermaid
+flowchart TB
+  Server["colink-server<br/>Go · Gin · GORM · PostgreSQL<br/>REST-API · WebSocket-Relay"]
+  Desktop["colink-desktop<br/>Tauri 2 · Rust · React"]
+  Android["colink-android<br/>Kotlin · Jetpack Compose"]
+
+  Server <-->|HTTPS / WSS| Desktop
+  Server <-->|HTTPS / WSS| Android
+  Desktop <-.->|Direktes LAN-P2P<br/>mDNS · WebSocket · E2EE| Android
 ```
 
 | Kommunikationsweg | Transport | Zweck |
 |------|----------|------|
 | Client ↔ Server | HTTPS + WSS | Authentifizierung, Geräteverwaltung, Cloud-Relay |
 | Client ↔ Client (LAN) | mDNS + WebSocket | Direktes P2P im selben Netzwerk |
-| Frontend ↔ Server | HTTPS | Kontoverwaltung |
 
 ## Sicherheit
 
@@ -130,7 +121,7 @@ Dieses Projekt verwendet eine Multi-Repository-Struktur. Jede Komponente wird ei
 | [colink-server](https://github.com/CoLinkDev/colink-server) | Go, Gin, GORM, PostgreSQL | Backend-API-Server und WebSocket-Relay |
 | [colink-desktop](https://github.com/CoLinkDev/colink-desktop) | Tauri 2.x (Rust + React/TS) | Desktop-Client für Windows, macOS und Linux |
 | [colink-android](https://github.com/CoLinkDev/colink-android) | Kotlin, Jetpack Compose | Android-Client |
-| [colink-frontend](https://github.com/CoLinkDev/colink-frontend) | Vue 3, TypeScript | Web-Frontend für Konto- und Sitzungsverwaltung |
+| [colink-castboard](https://github.com/CoLinkDev/colink-castboard) | TypeScript | Eigenständiges CastBoard-Projekt |
 | [CoLinkProtocol](https://github.com/CoLinkDev/CoLinkProtocol) | Markdown | Protokollspezifikationen und API-Dokumentation (gehostete Dokumentation: [CoLink Protocol](https://colinkdev.github.io/CoLinkProtocol/)) |
 
 Klone das Haupt-Repository und alle Unter-Repositories in dasselbe übergeordnete Verzeichnis:
@@ -141,7 +132,7 @@ cd CoLink
 git clone https://github.com/CoLinkDev/colink-server.git
 git clone https://github.com/CoLinkDev/colink-desktop.git
 git clone https://github.com/CoLinkDev/colink-android.git
-git clone https://github.com/CoLinkDev/colink-frontend.git
+git clone https://github.com/CoLinkDev/colink-castboard.git
 git clone https://github.com/CoLinkDev/CoLinkProtocol.git
 ```
 
@@ -152,4 +143,4 @@ Jedes Unterprojekt hat eigene Einrichtungsanweisungen. Siehe die jeweilige READM
 - **Server** — `colink-server/README.md`
 - **Desktop** — `colink-desktop/README.md`
 - **Android** — `colink-android/README.md`
-- **Frontend** — `colink-frontend/README.md`
+- **CastBoard** — `colink-castboard/README.md`
