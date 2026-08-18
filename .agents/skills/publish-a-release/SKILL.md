@@ -16,7 +16,7 @@ Use this skill to release a new version of the application: Create and push an a
 
 ## Workflow
 
-Note: After completing each of the following steps, you MUST re‑read this SKILL file to ensure operational accuracy.
+**IMPORTANT: AFTER COMPLETING EACH OF THE FOLLOWING STEPS, YOU MUST RE‑READ THIS SKILL FILE TO ENSURE OPERATIONAL ACCURACY.**
 
 ### 1. Ensure the working tree is clean and pushed
 
