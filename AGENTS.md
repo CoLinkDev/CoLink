@@ -26,3 +26,14 @@ When adding a README language:
 1. Copy `docs/readme/locales/template.yml` to a new locale package and replace every `TODO`.
 2. Add the locale code, display name, package path, and generated README path to `docs/readme/config.yml`.
 3. Run the generation and verification commands above.
+
+## Localization
+
+When working with multilingual content (release notes, READMEs, UI strings), maintain this
+locale order: English, 简体中文, 日本語, 한국어, 繁體中文, Deutsch, Español, Русский.
+
+See `docs/readme/config.yml` for the canonical locale list and coverage by component.
+
+## CastBoard Structure
+
+CastBoard exists in three forms: independent repository (`colink-castboard/`) for development, and git submodules in `colink-desktop/castboard` and `colink-android/castboard` for build integration. Make changes in the independent repo, tag it, then update submodule references in desktop and android repos. Both platforms build CastBoard during their builds (skipped in debug mode).
