@@ -39,12 +39,13 @@ Before tagging, the repository MUST be in a releasable state.
 Right after pushing the tag, draft the notes first — the CI runs in the background while you write.
 
 1. Synchronize remote tags, then determine the comparison range: the target tag is the new `v<version>`; the baseline is the tag created immediately before it. Confirm both resolve.
-2. Fully inspect the commits and file differences between the two tags, and deeply think about the relevant implementation. Do not rely solely on commit titles. For every potentially user-facing change, focus on UI text, user workflows, configuration behavior, documentation for supported behavior, and user-visible error handling.
+2. Fully inspect the commits and file differences between the two tags, and deeply think about the relevant implementation. Do not rely solely on commit titles. For every potentially user-facing change, focus on UI text, user workflows, configuration behavior, documentation for supported behavior, and user-visible error handling. If there are changes to the submodule version, you should also check the specific commits and changes to the submodule during this period.
 3. Write the Release Notes draft to a temporary Markdown file, following the [template](references/release-notes-template.md) and [example](references/release-notes-example.md) and the content rules below.
 
 - Organize the content according to the actual changes in this release, using the [Release Note template](references/release-notes-template.md) and [Release Note example](references/release-notes-example.md) as references. The notes MUST include every language in order.
 - Include only externally observable changes and describe specific capabilities or outcomes from the user's perspective: new capabilities, improvements to the user experience, and fixes for user-visible issues. Exclude refactoring, tests, CI, packaging, dependencies, internal architecture, and other engineering changes unless they directly affect the user experience. Keep each item concise and specific. Do not include commit IDs, PR numbers, file names, module names, or implementation details.
 - **When the same feature undergoes multiple iterations or follow-up corrections within the version, merge all related commits into a single entry describing only the final net effect — do not expose intermediate development steps or superseded states.**
+- If there are changes to the submodule version, you should also refine and write its user-facing changes.
 - The meaning MUST be equivalent in every language and expressed naturally in each one. Product names, established UI labels, file extensions, keyboard shortcuts, and technical terms that aid understanding may remain untranslated.
 - Include only categories with qualifying content. If a category has no relevant changes, omit both its heading and content in every language. Do not use placeholder text or add internal changes merely to populate a category.
 
