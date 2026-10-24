@@ -13,8 +13,6 @@ introduction: CoLink 是一款跨平台设备互联工具，将日常同步、�
 features:
   title: 功能
   items:
-  - name: 剪贴板同步
-    description: 在一台设备上复制，在另一台设备上粘贴。支持纯文本、富文本和图片。
   - name: 文件传输
     description: 在设备之间发送文件。局域网传输直连无大小限制；云端中继最大支持 10 MB。
   - name: 文本消息
@@ -89,7 +87,7 @@ quick_start:
   connect_steps:
   - 打开客户端并注册账户。
   - 通过 6 位配对码在同一局域网内配对设备，或通过服务器中继远程连接。
-  - 开始同步剪贴板、发送文件和消息，或使用远程访问、设备控制与 CastBoard。
+  - 开始发送文件和消息，或使用远程访问、设备控制与 CastBoard。
   self_hosting_title: 自托管（可选）
   self_hosting: 你可以使用 Docker 自托管 CoLink 服务器。部署说明见 [colink-server](https://github.com/CoLinkDev/colink-server)。
 architecture:
@@ -114,7 +112,7 @@ security:
   - 局域网连接通过四步双向握手建立互信，首次配对使用 SHA-256 派生的 6 位配对码防止 MITM
   - 局域网消息端到端加密：X25519 ECDH 密钥协商 + HKDF-SHA256 派生会话密钥 + AES-256-GCM/ChaCha20-Poly1305 AEAD
   - JWT Access Token 有效期 15 分钟；Refresh Token 单次使用后立即轮换，旧令牌标记撤销以检测重放
-  - 服务端不持久化任何消息、文件或剪贴板内容，仅存储账户与设备元数据
+  - 服务端不持久化任何消息或文件，仅存储账户与设备元数据
 development:
   title: 开发
   introduction: 本项目采用多仓库结构，各组件独立维护：

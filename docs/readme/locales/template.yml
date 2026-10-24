@@ -30,8 +30,6 @@ features:
     description: TODO
   - name: TODO
     description: TODO
-  - name: TODO
-    description: TODO
   availability_note: TODO
 platforms:
   headers:

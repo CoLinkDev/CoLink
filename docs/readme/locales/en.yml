@@ -13,8 +13,6 @@ introduction: CoLink is a cross-platform device connectivity tool that brings ev
 features:
   title: Features
   items:
-  - name: Clipboard Sync
-    description: Copy on one device and paste on another. Supports plain text, rich text, and images.
   - name: File Transfer
     description: Send files between devices. Direct LAN transfers have no size limit; cloud relay supports up to 10 MB.
   - name: Text Messages
@@ -89,7 +87,7 @@ quick_start:
   connect_steps:
   - Open the client and sign up.
   - Pair devices on the same LAN via the 6-digit pairing code, or connect remotely through the server relay.
-  - Start syncing clipboard, sending files and messages, or using remote access, device control, and CastBoard.
+  - Start sending files and messages, or use remote access, device control, and CastBoard.
   self_hosting_title: Self-hosting (Optional)
   self_hosting: You can self-host the CoLink server using Docker. See [colink-server](https://github.com/CoLinkDev/colink-server) for setup instructions.
 architecture:
@@ -114,7 +112,7 @@ security:
   - LAN connections establish mutual trust through a four-step mutual handshake. First-time pairing uses a SHA-256-derived 6-digit pairing code to prevent MITM attacks.
   - LAN messages are end-to-end encrypted with X25519 ECDH key agreement, HKDF-SHA256 session keys, and AES-256-GCM/ChaCha20-Poly1305 AEAD.
   - JWT access tokens are valid for 15 minutes. Refresh tokens are rotated immediately after single use, and old tokens are marked revoked to detect replay.
-  - The server does not persist messages, files, or clipboard contents. It only stores account and device metadata.
+  - The server does not persist messages or files. It only stores account and device metadata.
 development:
   title: Development
   introduction: 'This project uses a multi-repository structure. Each component is maintained independently:'

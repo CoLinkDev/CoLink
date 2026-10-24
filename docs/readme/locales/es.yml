@@ -13,8 +13,6 @@ introduction: CoLink es una herramienta multiplataforma para conectar dispositiv
 features:
   title: Funciones
   items:
-  - name: Sincronización del portapapeles
-    description: Copia en un dispositivo y pega en otro. Admite texto sin formato, texto enriquecido e imágenes.
   - name: Transferencia de archivos
     description: Envía archivos entre dispositivos. Las transferencias directas por LAN no tienen límite de tamaño; el relé en la nube admite hasta 10 MB.
   - name: Mensajes de texto
@@ -89,7 +87,7 @@ quick_start:
   connect_steps:
   - Abre el cliente y registra una cuenta.
   - Empareja dispositivos en la misma LAN con el código de 6 dígitos, o conéctalos de forma remota mediante el relé del servidor.
-  - Empieza a sincronizar el portapapeles, enviar archivos y mensajes, o usa el acceso remoto, el control de dispositivos y CastBoard.
+  - Empieza a enviar archivos y mensajes, o usa el acceso remoto, el control de dispositivos y CastBoard.
   self_hosting_title: Autoalojamiento (opcional)
   self_hosting: Puedes autoalojar el servidor de CoLink con Docker. Consulta [colink-server](https://github.com/CoLinkDev/colink-server) para ver las instrucciones de configuración.
 architecture:
@@ -114,7 +112,7 @@ security:
   - Las conexiones LAN establecen confianza mutua mediante un protocolo de enlace bidireccional de cuatro pasos. El primer emparejamiento usa un código de 6 dígitos derivado con SHA-256 para evitar ataques MITM.
   - 'Los mensajes LAN están cifrados de extremo a extremo: acuerdo de claves X25519 ECDH, claves de sesión derivadas con HKDF-SHA256 y AEAD AES-256-GCM/ChaCha20-Poly1305.'
   - Los JWT Access Token son válidos durante 15 minutos. Los Refresh Token se rotan inmediatamente tras un único uso, y los tokens antiguos se marcan como revocados para detectar repetición.
-  - El servidor no persiste mensajes, archivos ni contenido del portapapeles. Solo almacena metadatos de cuentas y dispositivos.
+  - El servidor no persiste mensajes ni archivos. Solo almacena metadatos de cuentas y dispositivos.
 development:
   title: Desarrollo
   introduction: 'Este proyecto usa una estructura de múltiples repositorios. Cada componente se mantiene de forma independiente:'

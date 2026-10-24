@@ -13,8 +13,6 @@ introduction: CoLink ist ein plattformübergreifendes Werkzeug zur Gerätevernet
 features:
   title: Funktionen
   items:
-  - name: Zwischenablage-Synchronisierung
-    description: Auf einem Gerät kopieren, auf einem anderen einfügen. Unterstützt Klartext, Rich Text und Bilder.
   - name: Dateiübertragung
     description: Dateien zwischen Geräten senden. Direkte LAN-Übertragungen haben keine Größenbeschränkung; Cloud-Relay unterstützt bis zu 10 MB.
   - name: Textnachrichten
@@ -89,7 +87,7 @@ quick_start:
   connect_steps:
   - Öffne den Client und registriere ein Konto.
   - Kopple Geräte im selben LAN über den sechsstelligen Kopplungscode oder verbinde sie remote über das Server-Relay.
-  - Starte die Zwischenablage-Synchronisierung, sende Dateien und Nachrichten oder nutze Fernzugriff, Gerätesteuerung und CastBoard.
+  - Sende Dateien und Nachrichten oder nutze Fernzugriff, Gerätesteuerung und CastBoard.
   self_hosting_title: Self-Hosting (optional)
   self_hosting: Du kannst den CoLink-Server mit Docker selbst hosten. Die Einrichtung ist unter [colink-server](https://github.com/CoLinkDev/colink-server) beschrieben.
 architecture:
@@ -114,7 +112,7 @@ security:
   - LAN-Verbindungen bauen gegenseitiges Vertrauen über einen vierstufigen beidseitigen Handshake auf. Die Erstkopplung nutzt einen aus SHA-256 abgeleiteten sechsstelligen Kopplungscode gegen MITM-Angriffe.
   - 'LAN-Nachrichten sind Ende-zu-Ende-verschlüsselt: X25519-ECDH-Schlüsselaustausch, aus HKDF-SHA256 abgeleitete Sitzungsschlüssel und AES-256-GCM/ChaCha20-Poly1305 AEAD.'
   - JWT Access Tokens sind 15 Minuten gültig. Refresh Tokens werden nach einmaliger Nutzung sofort rotiert, alte Tokens werden zur Replay-Erkennung widerrufen markiert.
-  - Der Server speichert keine Nachrichten, Dateien oder Zwischenablageinhalte dauerhaft, sondern nur Konto- und Geräte-Metadaten.
+  - Der Server speichert keine Nachrichten oder Dateien dauerhaft, sondern nur Konto- und Geräte-Metadaten.
 development:
   title: Entwicklung
   introduction: 'Dieses Projekt verwendet eine Multi-Repository-Struktur. Jede Komponente wird eigenständig gepflegt:'

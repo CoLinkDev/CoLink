@@ -20,7 +20,6 @@ CoLink ist ein plattformübergreifendes Werkzeug zur Gerätevernetzung, das allt
 
 ## Funktionen
 
-- **Zwischenablage-Synchronisierung** — Auf einem Gerät kopieren, auf einem anderen einfügen. Unterstützt Klartext, Rich Text und Bilder.
 - **Dateiübertragung** — Dateien zwischen Geräten senden. Direkte LAN-Übertragungen haben keine Größenbeschränkung; Cloud-Relay unterstützt bis zu 10 MB.
 - **Textnachrichten** — Notizen und Textausschnitte sofort zwischen Geräten senden.
 - **Remote-Dateizugriff** — Durchsuche das Dateisystem eines entfernten Geräts und übertrage Dateien zwischen verbundenen Geräten.
@@ -80,7 +79,7 @@ https://www.youtube.com/watch?v=w7pMdKMIfjg
 
 1. Öffne den Client und registriere ein Konto.
 2. Kopple Geräte im selben LAN über den sechsstelligen Kopplungscode oder verbinde sie remote über das Server-Relay.
-3. Starte die Zwischenablage-Synchronisierung, sende Dateien und Nachrichten oder nutze Fernzugriff, Gerätesteuerung und CastBoard.
+3. Sende Dateien und Nachrichten oder nutze Fernzugriff, Gerätesteuerung und CastBoard.
 
 ### Self-Hosting (optional)
 
@@ -110,7 +109,7 @@ flowchart TB
 - LAN-Verbindungen bauen gegenseitiges Vertrauen über einen vierstufigen beidseitigen Handshake auf. Die Erstkopplung nutzt einen aus SHA-256 abgeleiteten sechsstelligen Kopplungscode gegen MITM-Angriffe.
 - LAN-Nachrichten sind Ende-zu-Ende-verschlüsselt: X25519-ECDH-Schlüsselaustausch, aus HKDF-SHA256 abgeleitete Sitzungsschlüssel und AES-256-GCM/ChaCha20-Poly1305 AEAD.
 - JWT Access Tokens sind 15 Minuten gültig. Refresh Tokens werden nach einmaliger Nutzung sofort rotiert, alte Tokens werden zur Replay-Erkennung widerrufen markiert.
-- Der Server speichert keine Nachrichten, Dateien oder Zwischenablageinhalte dauerhaft, sondern nur Konto- und Geräte-Metadaten.
+- Der Server speichert keine Nachrichten oder Dateien dauerhaft, sondern nur Konto- und Geräte-Metadaten.
 
 ## Entwicklung
 

@@ -20,7 +20,6 @@ CoLink es una herramienta multiplataforma para conectar dispositivos que reúne 
 
 ## Funciones
 
-- **Sincronización del portapapeles** — Copia en un dispositivo y pega en otro. Admite texto sin formato, texto enriquecido e imágenes.
 - **Transferencia de archivos** — Envía archivos entre dispositivos. Las transferencias directas por LAN no tienen límite de tamaño; el relé en la nube admite hasta 10 MB.
 - **Mensajes de texto** — Envía notas y fragmentos de texto entre dispositivos al instante.
 - **Acceso remoto a archivos** — Explora el sistema de archivos de un dispositivo remoto y transfiere archivos entre dispositivos conectados.
@@ -80,7 +79,7 @@ https://www.youtube.com/watch?v=w7pMdKMIfjg
 
 1. Abre el cliente y registra una cuenta.
 2. Empareja dispositivos en la misma LAN con el código de 6 dígitos, o conéctalos de forma remota mediante el relé del servidor.
-3. Empieza a sincronizar el portapapeles, enviar archivos y mensajes, o usa el acceso remoto, el control de dispositivos y CastBoard.
+3. Empieza a enviar archivos y mensajes, o usa el acceso remoto, el control de dispositivos y CastBoard.
 
 ### Autoalojamiento (opcional)
 
@@ -110,7 +109,7 @@ flowchart TB
 - Las conexiones LAN establecen confianza mutua mediante un protocolo de enlace bidireccional de cuatro pasos. El primer emparejamiento usa un código de 6 dígitos derivado con SHA-256 para evitar ataques MITM.
 - Los mensajes LAN están cifrados de extremo a extremo: acuerdo de claves X25519 ECDH, claves de sesión derivadas con HKDF-SHA256 y AEAD AES-256-GCM/ChaCha20-Poly1305.
 - Los JWT Access Token son válidos durante 15 minutos. Los Refresh Token se rotan inmediatamente tras un único uso, y los tokens antiguos se marcan como revocados para detectar repetición.
-- El servidor no persiste mensajes, archivos ni contenido del portapapeles. Solo almacena metadatos de cuentas y dispositivos.
+- El servidor no persiste mensajes ni archivos. Solo almacena metadatos de cuentas y dispositivos.
 
 ## Desarrollo
 

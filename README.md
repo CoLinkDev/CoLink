@@ -20,7 +20,6 @@ CoLink is a cross-platform device connectivity tool that brings everyday sync, r
 
 ## Features
 
-- **Clipboard Sync** — Copy on one device and paste on another. Supports plain text, rich text, and images.
 - **File Transfer** — Send files between devices. Direct LAN transfers have no size limit; cloud relay supports up to 10 MB.
 - **Text Messages** — Send notes and text snippets between devices instantly.
 - **Remote File Access** — Browse the file system of a remote device and transfer files between connected devices.
@@ -80,7 +79,7 @@ https://www.youtube.com/watch?v=w7pMdKMIfjg
 
 1. Open the client and sign up.
 2. Pair devices on the same LAN via the 6-digit pairing code, or connect remotely through the server relay.
-3. Start syncing clipboard, sending files and messages, or using remote access, device control, and CastBoard.
+3. Start sending files and messages, or use remote access, device control, and CastBoard.
 
 ### Self-hosting (Optional)
 
@@ -110,7 +109,7 @@ flowchart TB
 - LAN connections establish mutual trust through a four-step mutual handshake. First-time pairing uses a SHA-256-derived 6-digit pairing code to prevent MITM attacks.
 - LAN messages are end-to-end encrypted with X25519 ECDH key agreement, HKDF-SHA256 session keys, and AES-256-GCM/ChaCha20-Poly1305 AEAD.
 - JWT access tokens are valid for 15 minutes. Refresh tokens are rotated immediately after single use, and old tokens are marked revoked to detect replay.
-- The server does not persist messages, files, or clipboard contents. It only stores account and device metadata.
+- The server does not persist messages or files. It only stores account and device metadata.
 
 ## Development
 
